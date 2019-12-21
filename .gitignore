@@ -1,5 +1,4 @@
 config.js
 node_modules
 bundle.js
-Package-lock.json
-Package.json
+notes.js

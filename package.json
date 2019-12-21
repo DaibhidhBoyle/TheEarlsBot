@@ -1,0 +1,25 @@
+{
+  "name": "soapbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pubsub-js": "^1.7.0",
+    "tmi.js": "^1.5.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaibhidhBoyle/TheEarlsBot.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/DaibhidhBoyle/TheEarlsBot/issues"
+  },
+  "homepage": "https://github.com/DaibhidhBoyle/TheEarlsBot#readme",
+  "description": ""
+}
