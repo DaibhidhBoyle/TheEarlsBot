@@ -2,7 +2,7 @@ const tmi = require('tmi.js');
 
 
 
-const Options = function (){
+const Options = function (username1, password1, channel1){
 	this.options= {
 		debug: true
 	};
@@ -11,10 +11,10 @@ const Options = function (){
 		reconnect: true
 	};
 	this.identity= {
-		username: null,
-		password: null
+		username: username1,
+		password: password1
 	};
-	this.channels= [null]
+	this.channels= [channel1]
 	};
 
 

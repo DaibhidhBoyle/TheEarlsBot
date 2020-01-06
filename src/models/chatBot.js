@@ -5,26 +5,31 @@ const Config = require('./config.js');
 
 const ChatBot = function (){
 	this.message = null
-  this.response = null
-	};
+	this.response = null
+};
 
 const CONFIGUREOPTIONS = 'ChatBot: configure-options';
+const OPTIONSCONFIGURED = 'Config: options-set';
 
-  ChatBot.prototype.bindChatBot = function () {
-    const options = new Options();
-    PubSub.publish(CONFIGUREOPTIONS, options);
-		};
+ChatBot.prototype.bindChatBot = function () {
+	PubSub.subscribe(OPTIONSCONFIGURED, (msg, data) => {
+		const options = new Options(data.username, data.password, data.channel);
+
+		const client = new tmi.Client(options);
+
+		client.connect();
+
+		client.on('connected', (address, port) => {
+
+			client.action('TheEarlsBot', 'hello!');
+
+		});
+
+	});
 
 
-// const client = new tmi.Client(options);
-//
-// client.connect();
-//
-//
-//
-// client.on('connected', (address, port) => {
-//   client.action(, 'Hello')
-// });
+};
+
 
 
 module.exports = ChatBot;
