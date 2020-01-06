@@ -19,11 +19,19 @@ ChatBot.prototype.bindChatBot = function () {
 
 		client.connect();
 
+		client.on('chat', (channel, user, message, self) => {
+if(message !== null) {
+			client.action(`${data.channel}`, 'i see you');
+		};
+	});
+
 		client.on('connected', (address, port) => {
 
-			client.action('TheEarlsBot', 'hello!');
+			client.action(`${data.channel}`, 'hello!');
 
 		});
+
+
 
 	});
 
