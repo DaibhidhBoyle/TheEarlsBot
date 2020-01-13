@@ -6,36 +6,45 @@ const Config = require('./config.js');
 const ChatBot = function (){
 	this.message = null
 	this.response = null
+	this.channel = null
 };
 
 const CONFIGUREOPTIONS = 'ChatBot: configure-options';
 const OPTIONSCONFIGURED = 'Config: options-set';
+const HANDLER = 'ChatBot: organise chat messages';
+const RESPONSE = '*: ready response to Twitch'
 
 ChatBot.prototype.bindChatBot = function () {
+
+
 	PubSub.subscribe(OPTIONSCONFIGURED, (msg, data) => {
 		const options = new Options(data.username, data.password, data.channel);
 
-		const client = new tmi.Client(options);
+		client = new tmi.Client(options);
+
+		this.channel = data.channel
 
 		client.connect();
 
 		client.on('chat', (channel, user, message, self) => {
-if(message !== null) {
-			client.action(`${data.channel}`, 'i see you');
-		};
-	});
 
-		client.on('connected', (address, port) => {
+			PubSub.publish(HANDLER, message);
 
-			client.action(`${data.channel}`, 'hello!');
+
 
 		});
 
+		client.on('connected', (address, port) => {
 
+			client.action(`${data.channel}`, 'Hello everyone. SoapBot is here and ready cure what ails ya');
+		});
 
 	});
 
+	PubSub.subscribe(RESPONSE, (msg, data) => {
+		client.action(`${this.channel}`, `${data}`);
 
+	});
 };
 
 
