@@ -42,7 +42,7 @@ ChatBot.prototype.bindChatBot = function () {
 	});
 
 	PubSub.subscribe(RESPONSE, (msg, data) => {
-		client.action(`${this.channel}`, `${data}`);
+		client.action(`${this.channel}`, `${data.response}`);
 
 	});
 };

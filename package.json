@@ -8,11 +8,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "auto-bind": "^4.0.0",
-    "pubsub-js": "^1.7.0",
+    "PubSub": "^3.6.0",
+    "express": "^4.17.1",
     "tmi.js": "^1.5.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DaibhidhBoyle/TheEarlsBot.git"

@@ -1,19 +1,17 @@
-// const tmi = require('tmi.js');
-// const PubSub = require('pubsub-js');
+const tmi = require('tmi.js');
+const PubSub = require('pubsub');
+
+const Social = function (){
+};
+
+
+// Social.prototype.bindSocial = function () {
+//     PubSub.subscribe(SOCIAL, (msg, data) => {
 //
-// const Social = function (){
-// };
-//
-// const SOCIALHANDLER = 'ChatBot: deliever social message request';
-// const RESPONSE = '*: Reply from query';
-//
-//
-// Social.prototype.bindChatBot = function () {
-//   PubSub.subscribe(OPTIONSCONFIGURED, (msg, data) => {
-//     let message = data.lowercase
 //     let response = null
-//     switch (message) {
-//       case '!social':
+//     let message = data
+//
+//     if (message === '!social') {
 //       response = `Kenny is all over the internet! Catch him at:
 //       Instagram - http://bit.ly/theearlofsuds
 //       Youtube - https://www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA
@@ -25,8 +23,9 @@
 //       Youtube - youtube.com/royaltysoaps
 //
 //       Or join the fun over at the community discord - https://discordapp.com/invite/PmK33d4`
+//           PubSub.publish(RESPONSE, response);
 //     };
-//     PubSub.publish(RESPONSE, response);
-//     break;
 //   });
 // };
+
+module.exports = Social;

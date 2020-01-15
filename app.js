@@ -2,9 +2,13 @@ const Options = require('./src/models/options.js');
 const Config = require('./src/models/config.js');
 const ChatBot = require('./src/models/chatBot.js')
 const Handler = require('./src/models/handler.js')
+const Social = require('./src/models/social.js')
 
-const handler = new Handler();
-handler.bindHandler();
+// const social = new Social();
+// social.bindSocial();
+//
+// const handler = new Handler();
+// handler.bindHandler();
 
 const chatBot = new ChatBot();
 chatBot.bindChatBot();
