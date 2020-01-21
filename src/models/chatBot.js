@@ -59,7 +59,7 @@ ChatBot.prototype.bindChatBot = function () {
 		if (this.message.includes('!soapbot')) {
 			PubSub.publish(FIRST, this.message);
 		}
-		else if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!faceboook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')) {
+		else if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!faceboook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
 			PubSub.publish(SOCIAL, this.message);
 		};
 	};
