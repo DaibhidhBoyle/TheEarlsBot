@@ -10,7 +10,7 @@ const ChatBot = function (){
 
 const CONFIGUREOPTIONS = 'Config: options-set';
 const RESPONSE = '*: ready response to Twitch'
-const FIRST = 'ChatBot: chat message to get to know bot'
+const BASIC = 'ChatBot: chat message to get to know bot'
 const SOCIAL = 'ChatBot: chat message to be by social.js'
 
 ChatBot.prototype.bindChatBot = function () {
@@ -56,8 +56,8 @@ ChatBot.prototype.bindChatBot = function () {
 
 	ChatBot.prototype.handler = function () {
 
-		if (this.message.includes('!soapbot')) {
-			PubSub.publish(FIRST, this.message);
+		if (this.message.includes('!soapbot') || this.message.includes('!royalitysoaps') || this.message.includes('!rs')) {
+			PubSub.publish(BASIC, this.message);
 		}
 		else if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
 			PubSub.publish(SOCIAL, this.message);

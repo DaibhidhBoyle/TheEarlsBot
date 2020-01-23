@@ -5,16 +5,25 @@ const Basic = function (){
   this.response = null
 };
 
-const FIRST = 'ChatBot: chat message to get to know bot'
+const BASIC = 'ChatBot: chat message to get to know bot'
 const RESPONSE = '*: ready response to Twitch'
 
 Basic.prototype.bindBasic = function () {
-    PubSub.subscribe(FIRST, (msg, data) => {
+    PubSub.subscribe(BASIC, (msg, data) => {
 
-    if (data.includes('!soapbot')) {
-      this.response = `I am SoapBot; a bot here to help with whatever you need. Nice to meet you! If you want to have a look at kenny's soaps try typing '!Soap' into the chat. Or to find out more about our chat team competition type '!Team`
-          PubSub.publish(RESPONSE, this.response);
+      let message = data
+
+    if (message.includes(`!welcome`)){
+      this.response = 'Welcome to the Earl of Suds twitch channel. The Earl is Kenny White, a Texan gamer dedicated to great gameplay, engaging with his community and being a wholesome bean. Please make yourself at home and get friendly in chat. '
+    }
+    else if (message.includes('!soapbot')) {
+      this.response = `I am SoapBot; a bot here to help with whatever you need. Nice to meet you! *add some instructions here*`
+
+    }
+    else if(message.includes('!royalitysoaps') || data.includes('!rs')){
+      this.response = 'Kenny works along side his family to make luxury, hand-crafted soaps and let you be part of the process through high quality crafting videos. Find out more at https://www.royaltysoaps.com/ or get a glimpse of the making at youtube.com/royaltysoaps '
     };
+    PubSub.publish(RESPONSE, this.response);
   });
 };
 
