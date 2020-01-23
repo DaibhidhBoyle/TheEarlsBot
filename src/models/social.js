@@ -6,7 +6,7 @@ const Social = function (){
   this.random = null
 };
 
-const SOCIAL = 'ChatBot: chat message to be by social.js'
+const SOCIAL = 'ChatBot: chat message to be repled by social media links'
 const RESPONSE = '*: ready response to Twitch'
 
 
