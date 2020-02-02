@@ -5,8 +5,8 @@ const Basic = function (){
   this.response = null
 };
 
-const BASIC = 'ChatBot: chat message to get to know streamer/bot'
-const RESPONSE = '*: ready response to Twitch'
+const BASIC = 'ChatBot: chat message to get to know streamer/bot';
+const RESPONSE = '*: ready response to Twitch';
 
 Basic.prototype.bindBasic = function () {
   PubSub.subscribe(BASIC, (msg, data) => {
@@ -21,7 +21,7 @@ Basic.prototype.bindBasic = function () {
 
     }
     else if(message.includes('!royalitysoap') || data.includes('!rs')){
-      this.response = `Kenny works along side his family to make luxury, hand-crafted soaps and invites you be part of the process through high quality crafting videos. Find out more at https://www.royaltysoaps.com/ or get a look at the those 'making of' at youtube.com/royaltysoaps `
+      this.response = `Kenny works along side his family to make luxury, hand-crafted soaps and invites you be part of the process through high quality crafting videos. Find out more at ***  https://www.royaltysoaps.com/ *** or get a look at the those 'making of' at *** youtube.com/royaltysoaps *** `
     };
     PubSub.publish(RESPONSE, this.response);
   });

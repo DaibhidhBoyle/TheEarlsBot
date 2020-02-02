@@ -6,13 +6,15 @@ const Config = require('./config.js');
 const ChatBot = function (){
 	this.message = null
 	this.channel = null
+	this.user = null
 };
 
 const CONFIGUREOPTIONS = 'Config: options-set';
-const RESPONSE = '*: ready response to Twitch'
-const BASIC = 'ChatBot: chat message to get to know streamer/bot'
-const SOCIAL = 'ChatBot: chat message to be repled by social media links'
-const SHOUTOUT = 'ChatBot: chat message to link out to other twitch streamer'
+const RESPONSE = '*: ready response to Twitch';
+const MODONLYRESPONSE = '*: ready a mod only response to Twitch';
+const BASIC = 'ChatBot: chat message to get to know streamer/bot';
+const SOCIAL = 'ChatBot: chat message to be repled by social media links';
+const SHOUTOUT = 'ChatBot: chat message to link out to other twitch streamer';
 
 ChatBot.prototype.bindChatBot = function () {
 
@@ -28,7 +30,8 @@ ChatBot.prototype.bindChatBot = function () {
 
 		client.on('chat', (channel, user, message, self) => {
 
-			this.message = message
+			this.user = user
+			this.message = message.toLowerCase();
 
 			this.handler();
 
@@ -47,10 +50,15 @@ ChatBot.prototype.bindChatBot = function () {
 
 	PubSub.subscribe(RESPONSE, (msg, data) => {
 		client.action(`${this.channel}`, `${data}`);
-
 	});
 
-
+	PubSub.subscribe(MODONLYRESPONSE, (msg, data) => {
+		if (this.user[`user-type`] === 'mod'){
+			client.action(`${this.channel}`, `${data}`);
+	} else {
+			client.action(`${this.channel}`, `Sorry ${this.user[`display-name`]}, that's a mod only action`);
+	}
+	});
 
 
 
@@ -63,7 +71,7 @@ ChatBot.prototype.bindChatBot = function () {
 		else if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
 			PubSub.publish(SOCIAL, this.message);
 		}
-		else if (this.message.includes(`!so`)){
+		else if (this.message.includes(`!shoutout`) ||this.message.includes(`!so`)){
 			PubSub.publish(SHOUTOUT, this.message);
 		}
 	};
