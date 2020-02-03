@@ -15,6 +15,7 @@ const MODONLYRESPONSE = '*: ready a mod only response to Twitch';
 const BASIC = 'ChatBot: chat message to get to know streamer/bot';
 const SOCIAL = 'ChatBot: chat message to be repled by social media links';
 const SHOUTOUT = 'ChatBot: chat message to link out to other twitch streamer';
+const STREAK = 'ChatBot: chat message to be replied to by how days in a row the stream has streamed';
 
 ChatBot.prototype.bindChatBot = function () {
 
@@ -73,6 +74,9 @@ ChatBot.prototype.bindChatBot = function () {
 		}
 		else if (this.message.includes(`!shoutout`) ||this.message.includes(`!so`)){
 			PubSub.publish(SHOUTOUT, this.message);
+		} else if (this.message.includes(`!streak`)){
+			let date = new Date();
+			PubSub.publish(STREAK, date);
 		}
 	};
 

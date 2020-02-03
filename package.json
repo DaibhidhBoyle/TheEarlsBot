@@ -11,6 +11,7 @@
     "PubSub": "^3.6.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
+    "node-persist": "^2.1.0",
     "pubsub-js": "^1.8.0",
     "tmi.js": "^1.5.0"
   },
