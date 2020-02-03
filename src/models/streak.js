@@ -11,9 +11,9 @@ const RESPONSE = '*: ready response to Twitch';
 Streak.prototype.bindStreak = function () {
   storage.initSync();
     PubSub.subscribe(STREAK, (msg, data) => {
-      storage.setItemSync('name','dai');
-      name = storage.getItemSync('name');
-      PubSub.publish(RESPONSE, name);
+      storage.setItemSync(`${data + 1}`,`1`);
+      streakCounter = storage.getItemSync(`${data}`);
+      PubSub.publish(RESPONSE, streakCounter);
     });
   };
 
