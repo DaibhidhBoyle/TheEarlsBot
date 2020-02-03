@@ -76,6 +76,7 @@ ChatBot.prototype.bindChatBot = function () {
 			PubSub.publish(SHOUTOUT, this.message);
 		} else if (this.message.includes(`!streak`)){
 			let date = new Date();
+			date.setHours(0,0,0,0);
 			PubSub.publish(STREAK, date);
 		}
 	};
