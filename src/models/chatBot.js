@@ -1,7 +1,7 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const Options = require('./options.js');
-const Config = require('./config.js');
+
 
 const ChatBot = function (){
 	this.message = null
@@ -75,9 +75,7 @@ ChatBot.prototype.bindChatBot = function () {
 		else if (this.message.includes(`!shoutout`) ||this.message.includes(`!so`)){
 			PubSub.publish(SHOUTOUT, this.message);
 		} else if (this.message.includes(`!streak`)){
-			let date = new Date();
-			date.setHours(0,0,0,0);
-			PubSub.publish(STREAK, date);
+			PubSub.publish(STREAK, this.message);
 		}
 	};
 
