@@ -3,11 +3,11 @@ const PubSub = require('pubsub-js');
 const storage = require('node-persist');
 const pschannel = require('../helpers/pubsubchannels');
 
+
 const Streak = function (){
   this.response = null
   this.count = null
 };
-
 
 Streak.prototype.bindStreak = function () {
 
@@ -61,6 +61,9 @@ Streak.prototype.bindStreak = function () {
     };
 
     PubSub.publish(pschannel.response, this.response);
+    }else {
+      this.response = `error` + ` ` + `${this.count}`
+    }
   });
 };
 

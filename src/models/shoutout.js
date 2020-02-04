@@ -23,6 +23,7 @@ Shoutout.prototype.bindShoutout = function () {
 
   PubSub.subscribe(pschannel.shoutout, (msg, data) => {
 
+
     this.message = data
 
     if (this.message === '!so'){
@@ -30,6 +31,7 @@ Shoutout.prototype.bindShoutout = function () {
       this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`;
 
       PubSub.publish(pschannel.modonlyresponse, this.response);
+
     } else {
       this.shoutoutList = [];
 
@@ -57,6 +59,7 @@ Shoutout.prototype.bindShoutout = function () {
       };
 
       PubSub.publish(pschannel.modonlyresponse, this.response);
+
     };
 
   });

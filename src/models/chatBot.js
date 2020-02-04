@@ -3,16 +3,19 @@ const PubSub = require('pubsub-js');
 const Options = require('./options.js');
 const pschannel = require('../helpers/pubsubchannels');
 
+
 const ChatBot = function (){
 	this.message = null
 	this.channel = null
 	this.user = null
 };
 
+
 ChatBot.prototype.bindChatBot = function () {
 
 
 	PubSub.subscribe(pschannel.configureoptions, (msg, data) => {
+
 		const options = new Options(data.username, data.password, data.channel);
 
 		client = new tmi.Client(options);
@@ -37,6 +40,7 @@ ChatBot.prototype.bindChatBot = function () {
 		});
 
 	});
+
 
 
 

@@ -23,7 +23,9 @@ Basic.prototype.bindBasic = function () {
     else if(message.includes('!royalitysoap') || data.includes('!rs')){
       this.response = `Kenny works along side his family to make luxury, hand-crafted soaps and invites you be part of the process through high quality crafting videos. Find out more at https://www.royaltysoaps.com/ or get a look at those 'making of' videos at youtube.com/royaltysoaps`
     };
+    
     PubSub.publish(pschannel.response, this.response);
+
   });
 };
 

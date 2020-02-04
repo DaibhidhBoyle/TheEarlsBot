@@ -2,11 +2,11 @@ const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const pschannel = require('../helpers/pubsubchannels');
 
+
 const Social = function (){
   this.response = null
   this.random = null
 };
-
 
 
 
@@ -43,6 +43,7 @@ Social.prototype.bindSocial = function () {
     };
 
     PubSub.publish(pschannel.response, this.response);
+
   });
 };
 
