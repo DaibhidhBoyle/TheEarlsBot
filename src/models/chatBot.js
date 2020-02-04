@@ -1,7 +1,7 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const Options = require('./options.js');
-const pschannels = require('../helpers/pschannels');
+const pschannels = require('../helpers/pubsubchannels');
 
 const ChatBot = function (){
 	this.message = null

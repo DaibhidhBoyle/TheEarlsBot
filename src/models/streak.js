@@ -1,7 +1,7 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const storage = require('node-persist');
-const pschannels = require('../helpers/pschannels');
+const pschannels = require('../helpers/pubsubchannels');
 
 const Streak = function (){
   this.response = null
