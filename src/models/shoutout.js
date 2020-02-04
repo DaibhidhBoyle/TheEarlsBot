@@ -1,5 +1,7 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
+const pubsubchannels = require('../helpers/pubsubchannels');
+
 
 const Shoutout = function (){
   this.response = null;
@@ -17,12 +19,10 @@ const Shoutout = function (){
 
 };
 
-const SHOUTOUT = 'ChatBot: chat message to link out to other twitch streamer';
-const MODONLYRESPONSE = '*: ready a mod only response to Twitch';
 
 Shoutout.prototype.bindShoutout = function () {
 
-  PubSub.subscribe(SHOUTOUT, (msg, data) => {
+  PubSub.subscribe(pubsubchannels.shoutout, (msg, data) => {
 
     this.message = data
 
@@ -30,7 +30,7 @@ Shoutout.prototype.bindShoutout = function () {
 
       this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`;
 
-      PubSub.publish(MODONLYRESPONSE, this.response);
+      PubSub.publish(pubsubchannels.modonlyreponse, this.response);
     } else {
       this.shoutoutList = [];
 
@@ -57,7 +57,7 @@ Shoutout.prototype.bindShoutout = function () {
         this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`
       };
 
-      PubSub.publish(MODONLYRESPONSE, this.response);
+      PubSub.publish(pubsubchannels.modonlyreponse, this.response);
     };
 
   });
