@@ -1,5 +1,6 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
+const pschannel = require('../helpers/pubsubchannels');
 
 const Shoutout = function (){
   this.response = null;
@@ -17,12 +18,10 @@ const Shoutout = function (){
 
 };
 
-const SHOUTOUT = 'ChatBot: chat message to link out to other twitch streamer';
-const MODONLYRESPONSE = '*: ready a mod only response to Twitch';
 
 Shoutout.prototype.bindShoutout = function () {
 
-  PubSub.subscribe(SHOUTOUT, (msg, data) => {
+  PubSub.subscribe(pschannel.shoutout, (msg, data) => {
 
     this.message = data
 
@@ -30,7 +29,7 @@ Shoutout.prototype.bindShoutout = function () {
 
       this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`;
 
-      PubSub.publish(MODONLYRESPONSE, this.response);
+      PubSub.publish(pschannel.modonlyresponse, this.response);
     } else {
       this.shoutoutList = [];
 
@@ -48,16 +47,16 @@ Shoutout.prototype.bindShoutout = function () {
       let arrayLength = this.shoutoutList.length;
 
       if(arrayLength === 1){
-        this.response = `Looking for a new stream to follow? Try    *** www.twitch.tv/${this.shoutoutList[0]} ***`
+        this.response = `Looking for a new stream to follow? Try www.twitch.tv/${this.shoutoutList[0]}`
       } else if (arrayLength === 2) {
-        this.response = `They're some great streamers out there! Checkout  *** www.twitch.tv/${this.shoutoutList[0]} ***  or  *** www.twitch.tv/${this.shoutoutList[1]} ***`
+        this.response = `They're some great streamers out there! Checkout www.twitch.tv/${this.shoutoutList[0]} or  www.twitch.tv/${this.shoutoutList[1]}`
       } else if (arrayLength === 3) {
-        this.response = `Don't let your time on twitch end when the the Earl of Suds logs out. Checkout out more great streamers like *** www.twitch.tv/${this.shoutoutList[0]} *** or  *** www.twitch.tv/${this.shoutoutList[1]} *** or  *** www.twitch.tv/${this.shoutoutList[2]} ***`
+        this.response = `Don't let your time on twitch end when the the Earl of Suds logs out. Checkout out more great streamers like www.twitch.tv/${this.shoutoutList[0]} or  www.twitch.tv/${this.shoutoutList[1]} or  www.twitch.tv/${this.shoutoutList[2]}`
       } else {
         this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`
       };
 
-      PubSub.publish(MODONLYRESPONSE, this.response);
+      PubSub.publish(pschannel.modonlyresponse, this.response);
     };
 
   });
