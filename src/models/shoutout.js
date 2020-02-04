@@ -1,6 +1,6 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
-const pubsubchannels = require('../helpers/pubsubchannels');
+const pschannels = require('../helpers/pschannels');
 
 
 const Shoutout = function (){
@@ -22,7 +22,7 @@ const Shoutout = function (){
 
 Shoutout.prototype.bindShoutout = function () {
 
-  PubSub.subscribe(pubsubchannels.shoutout, (msg, data) => {
+  PubSub.subscribe(pschannels.shoutout, (msg, data) => {
 
     this.message = data
 
@@ -30,7 +30,7 @@ Shoutout.prototype.bindShoutout = function () {
 
       this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`;
 
-      PubSub.publish(pubsubchannels.modonlyreponse, this.response);
+      PubSub.publish(pschannels.modonlyreponse, this.response);
     } else {
       this.shoutoutList = [];
 
@@ -57,7 +57,7 @@ Shoutout.prototype.bindShoutout = function () {
         this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`
       };
 
-      PubSub.publish(pubsubchannels.modonlyreponse, this.response);
+      PubSub.publish(pschannels.modonlyreponse, this.response);
     };
 
   });

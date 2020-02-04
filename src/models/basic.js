@@ -1,6 +1,6 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
-const pubsubchannels = require('../helpers/pubsubchannels');
+const pschannels = require('../helpers/pschannels');
 
 const Basic = function (){
   this.response = null
@@ -9,7 +9,7 @@ const Basic = function (){
 
 
 Basic.prototype.bindBasic = function () {
-  PubSub.subscribe(pubsubchannels.basic, (msg, data) => {
+  PubSub.subscribe(pschannels.basic, (msg, data) => {
 
     let message = data
 
@@ -23,7 +23,7 @@ Basic.prototype.bindBasic = function () {
     else if(message.includes('!royalitysoap') || data.includes('!rs')){
       this.response = `Kenny works along side his family to make luxury, hand-crafted soaps and invites you be part of the process through high quality crafting videos. Find out more at https://www.royaltysoaps.com/ or get a look at those 'making of' videos at youtube.com/royaltysoaps`
     };
-    PubSub.publish(pubsubchannels.response, this.response);
+    PubSub.publish(pschannels.response, this.response);
   });
 };
 

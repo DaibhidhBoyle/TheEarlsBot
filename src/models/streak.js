@@ -1,7 +1,7 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const storage = require('node-persist');
-const pubsubchannels = require('../helpers/pubsubchannels');
+const pschannels = require('../helpers/pschannels');
 
 const Streak = function (){
   this.response = null
@@ -33,7 +33,7 @@ Streak.prototype.bindStreak = function () {
   }
 
 
-  PubSub.subscribe(pubsubchannels.streak, (msg, data) => {
+  PubSub.subscribe(pschannels.streak, (msg, data) => {
     if(this.count === 1){
       this.response = `Kenny is just starting a new streak! This is day 1`;
     }
@@ -61,7 +61,7 @@ Streak.prototype.bindStreak = function () {
       this.response = `error` + ` ` + `${this.count}`
     }
 
-    PubSub.publish(pubsubchannels.response, this.response);
+    PubSub.publish(pschannels.response, this.response);
   });
 };
 

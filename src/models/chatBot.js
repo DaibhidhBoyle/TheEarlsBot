@@ -1,7 +1,7 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const Options = require('./options.js');
-const pubsubchannels = require('../helpers/pubsubchannels');
+const pschannels = require('../helpers/pschannels');
 
 const ChatBot = function (){
 	this.message = null
@@ -13,7 +13,7 @@ const ChatBot = function (){
 ChatBot.prototype.bindChatBot = function () {
 
 
-	PubSub.subscribe(pubsubchannels.configureoptions, (msg, data) => {
+	PubSub.subscribe(pschannels.configureoptions, (msg, data) => {
 		const options = new Options(data.username, data.password, data.channel);
 
 		client = new tmi.Client(options);
@@ -42,11 +42,11 @@ ChatBot.prototype.bindChatBot = function () {
 
 
 
-	PubSub.subscribe(pubsubchannels.response, (msg, data) => {
+	PubSub.subscribe(pschannels.response, (msg, data) => {
 		client.action(`${this.channel}`, `${data}`);
 	});
 
-	PubSub.subscribe(pubsubchannels.modonlyreponse, (msg, data) => {
+	PubSub.subscribe(pschannels.modonlyreponse, (msg, data) => {
 		if (this.user[`user-type`] === 'mod'){
 			client.action(`${this.channel}`, `${data}`);
 	} else {
@@ -60,15 +60,15 @@ ChatBot.prototype.bindChatBot = function () {
 	ChatBot.prototype.handler = function () {
 
 		if (this.message.includes(`!welcome`) || this.message.includes('!soapbot') || this.message.includes('!royalitysoap') || this.message.includes('!rs')) {
-			PubSub.publish(pubsubchannels.basic, this.message);
+			PubSub.publish(pschannels.basic, this.message);
 		}
 		else if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
-			PubSub.publish(pubsubchannels.social, this.message);
+			PubSub.publish(pschannels.social, this.message);
 		}
 		else if (this.message.includes(`!shoutout`) ||this.message.includes(`!so`)){
-			PubSub.publish(pubsubchannels.shoutout, this.message);
+			PubSub.publish(pschannels.shoutout, this.message);
 		} else if (this.message.includes(`!streak`)){
-			PubSub.publish(pubsubchannels.streak, this.message);
+			PubSub.publish(pschannels.streak, this.message);
 		}
 	};
 

@@ -1,6 +1,6 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
-const pubsubchannels = require('../helpers/pubsubchannels');
+const pschannels = require('../helpers/pschannels');
 
 const Social = function (){
   this.response = null
@@ -10,7 +10,7 @@ const Social = function (){
 
 Social.prototype.bindSocial = function () {
 
-  PubSub.subscribe(pubsubchannels.social, (msg, data) => {
+  PubSub.subscribe(pschannels.social, (msg, data) => {
 
     this.rerandom();
 
@@ -39,7 +39,7 @@ Social.prototype.bindSocial = function () {
       this.response = `Kenny is making soap all over the internet. Catch him at : Instagram -   bit.ly/2uRox1V Twitter -  bit.ly/2QAZI33 Facebook -  bit.ly/2QFB5lE Youtube - youtube.com/royaltysoaps Or join the fun over at the community discord - https://discordapp.com/invite/PmK33d4`
     };
 
-    PubSub.publish(pubsubchannels.response, this.response);
+    PubSub.publish(pschannels.response, this.response);
   });
 };
 
