@@ -9,9 +9,11 @@
   "license": "ISC",
   "dependencies": {
     "PubSub": "^3.6.0",
+    "cheerio": "^1.0.0-rc.3",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "pubsub-js": "^1.8.0",
+    "request": "^2.88.0",
     "tmi.js": "^1.5.0"
   },
   "repository": {

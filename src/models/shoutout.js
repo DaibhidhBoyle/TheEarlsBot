@@ -1,6 +1,6 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
-const pschannel = require('../helpers/pubsubchannels');
+// const pschannel = require('../helpers/pubsubchannels');
 
 const Shoutout = function (){
   this.response = null;
