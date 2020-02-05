@@ -1,20 +1,12 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
-// const pschannel = require('../helpers/pubsubchannels');
+const pschannel = require('../helpers/pubsubchannels');
 
 const Shoutout = function (){
   this.response = null;
   this.shoutoutList = [];
   this.message = null
-  this.test = `start`
 
-  this.num1 = null
-  this.num2 = null
-  this.num3 = null
-  this.num4 = null
-
-  this.str1 = null
-  this.str2 = null
 
 };
 

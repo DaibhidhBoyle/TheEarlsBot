@@ -3,10 +3,18 @@ const PubSub = require('pubsub-js');
 const storage = require('node-persist');
 const pschannel = require('../helpers/pubsubchannels');
 
-
 const Streak = function (){
   this.response = null
   this.count = null
+  
+    this.num1 = null
+    this.num2 = null
+    this.num3 = null
+    this.num4 = null
+
+    this.str1 = null
+    this.str2 = null
+    this.str3 = null
 };
 
 Streak.prototype.bindStreak = function () {
@@ -58,12 +66,11 @@ Streak.prototype.bindStreak = function () {
     }
     else if (this.count >= 25){
       this.response = `Hot Dang! The Earl of Suds has streamed everyday for ${this.count} days! Now that's impressive.`;
-    };
-
-    PubSub.publish(pschannel.response, this.response);
     }else {
       this.response = `error` + ` ` + `${this.count}`
     }
+
+    PubSub.publish(pschannel.response, this.response);
   });
 };
 

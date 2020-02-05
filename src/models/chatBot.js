@@ -71,7 +71,7 @@ ChatBot.prototype.bindChatBot = function () {
 		else if (this.message.includes(`!shoutout`) ||this.message.includes(`!so`)){
 			PubSub.publish(pschannel.shoutout, this.message);
 		} else if (this.message.includes(`!streak`)){
-			PubSub.publish(pschannel.streak, this.message);
+			PubSub.publish(pschannel.streak, ' ');
 		}
 	};
 

@@ -4,6 +4,14 @@ const ChatBot = require('./src/models/chatBot.js');
 const Basic = require('./src/models/basic.js');
 const Social = require('./src/models/social.js');
 const Shoutout = require('./src/models/shoutout.js');
+const Streak = require('./src/models/streak.js');
+const Soap = require('./src/models/soap.js');
+
+const soap = new SoapClass();
+soap.bindSoap();
+
+const streak = new Streak();
+streak.bindStreak();
 
 const shoutout = new Shoutout();
 shoutout.bindShoutout();
