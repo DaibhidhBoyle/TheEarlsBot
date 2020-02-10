@@ -4,17 +4,17 @@ const storage = require('node-persist');
 const pschannel = require('../helpers/pubsubchannels');
 
 const Streak = function (){
-  this.response = null
-  this.count = null
-  
-    this.num1 = null
-    this.num2 = null
-    this.num3 = null
-    this.num4 = null
+  this.response = null;
+  this.count = null;
 
-    this.str1 = null
-    this.str2 = null
-    this.str3 = null
+    this.num1 = null;
+    this.num2 = null;
+    this.num3 = null;
+    this.num4 = null;
+
+    this.str1 = null;
+    this.str2 = null;
+    this.str3 = null;
 };
 
 Streak.prototype.bindStreak = function () {

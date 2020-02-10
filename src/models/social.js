@@ -4,8 +4,8 @@ const pschannel = require('../helpers/pubsubchannels');
 
 
 const Social = function (){
-  this.response = null
-  this.random = null
+  this.response = null;
+  this.random = null;
 };
 
 

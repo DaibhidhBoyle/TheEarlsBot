@@ -7,7 +7,7 @@ const Shoutout = require('./src/models/shoutout.js');
 const Streak = require('./src/models/streak.js');
 const Soap = require('./src/models/soap.js');
 
-const soap = new SoapClass();
+const soap = new Soap();
 soap.bindSoap();
 
 const streak = new Streak();

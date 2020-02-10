@@ -5,9 +5,9 @@ const pschannel = require('../helpers/pubsubchannels');
 
 
 const ChatBot = function (){
-	this.message = null
-	this.channel = null
-	this.user = null
+	this.message = null;
+	this.channel = null;
+	this.user = null;
 };
 
 
@@ -62,10 +62,13 @@ ChatBot.prototype.bindChatBot = function () {
 
 	ChatBot.prototype.handler = function () {
 
-		if (this.message.includes(`!welcome`) || this.message.includes('!soapbot') || this.message.includes('!royalitysoap') || this.message.includes('!rs')) {
+		if (this.message.includes(`!welcome`) || this.message.includes('!soapbot') || this.message.includes('!royalitysoap') || this.message.includes('!rs') || this.message.includes('!when')|| this.message.includes('!schedule')) {
 			PubSub.publish(pschannel.basic, this.message);
 		}
-		else if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
+	else if (this.message.includes('!soap')){
+		PubSub.publish(pschannel.soap, this.message);
+	}
+	else if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
 			PubSub.publish(pschannel.social, this.message);
 		}
 		else if (this.message.includes(`!shoutout`) ||this.message.includes(`!so`)){
