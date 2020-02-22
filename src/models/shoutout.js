@@ -2,6 +2,10 @@ const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const pschannel = require('../helpers/pubsubchannels');
 
+var TinyURL = require('tinyurl');
+var Promise = require('promise');
+
+
 const Shoutout = function (){
   this.response = null;
   this.shoutoutList = [];
@@ -15,7 +19,6 @@ const Shoutout = function (){
   this.str1 = null;
   this.str2 = null;
   this.str3 = null;
-
 };
 
 
@@ -59,9 +62,7 @@ Shoutout.prototype.bindShoutout = function () {
       };
 
       PubSub.publish(pschannel.modonlyresponse, this.response);
-
     };
-
   });
 
 
@@ -86,7 +87,10 @@ Shoutout.prototype.bindShoutout = function () {
       }
 
     };
+
   };
+
+
 
 };
 
