@@ -18,8 +18,9 @@ const Soap = function (){
 Soap.prototype.bindSoap = function () {
 
   PubSub.subscribe(pschannel.soap, async (msg, data) => {
-
+    this.response = ' '
     this.message = data.trim();
+    
     if (this.message === '!soap'){
       this.response = `It looks like your trying to search for royality soap products but haven't said what you're searching for :( a good example would be typing '!soap honey'`
     };
@@ -43,7 +44,7 @@ Soap.prototype.bindSoap = function () {
         });
 
         await this.ShortenLink(`${this.url}`);
-        await hat.then(result => {
+        await short.then(result => {
           this.url = result
         });
 
@@ -62,7 +63,7 @@ Soap.prototype.bindSoap = function () {
           this.response = `I found the ${products[0]} available at ${this.shortUrl}`;
         }
         else if (links.length > 1){
-          this.response = `There's a lot of great products matching your search! Like the ${products[0]} Available at ${this.shortUrl}. Have a look at them all at ${this.url}.`;
+          this.response = `There's a lot of great products matching your search! Like the ${products[0]} Available at ${this.shortUrl}. Have a look at them all at ${this.url}!`;
         }
 
 

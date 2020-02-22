@@ -43,6 +43,8 @@ Streak.prototype.bindStreak = function () {
 
 
   PubSub.subscribe(pschannel.streak, (msg, data) => {
+
+    this.response = ' '
     if(this.count === 1){
       this.response = `Kenny is just starting a new streak! This is day 1`;
     }

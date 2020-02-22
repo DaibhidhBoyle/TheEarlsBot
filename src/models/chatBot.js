@@ -45,7 +45,7 @@ ChatBot.prototype.bindChatBot = function () {
 
 
 	PubSub.subscribe(pschannel.response, (msg, data) => {
-		client.action(`${this.channel}`, `${data}`);
+		client.action(`${this.channel}`, `@${this.user[`display-name`]}` + ` ` + `${data}`);
 	});
 
 	PubSub.subscribe(pschannel.modonlyresponse, (msg, data) => {

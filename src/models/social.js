@@ -5,6 +5,7 @@ const pschannel = require('../helpers/pubsubchannels');
 
 const Social = function (){
   this.response = null;
+  this.this.message = null
   this.random = null;
 };
 
@@ -17,28 +18,28 @@ Social.prototype.bindSocial = function () {
 
     this.rerandom();
 
-    let message = data
+    let this.message = data
 
-    if (message.includes('!discord')) {
+    if (this.message.includes('!discord')) {
       this.randomDiscord();
     }
 
-    else if (message.includes('!instagram') || message.includes('!insta')) {
+    else if (this.message.includes('!instagram') || this.message.includes('!insta')) {
       this.randomInsta();
     }
-    else if (message.includes(`!youtube`) || message.includes(`!yt`)){
+    else if (this.message.includes(`!youtube`) || this.message.includes(`!yt`)){
       this.randomYt();
     }
-    else if (message.includes('!twitter')) {
+    else if (this.message.includes('!twitter')) {
       this.randomTwitter();
     }
-    else if (message.includes(`!facebook`) || message.includes('!fb')) {
+    else if (this.message.includes(`!facebook`) || this.message.includes('!fb')) {
       this.RandomFb();
     }
-    else if (message.includes('!social')) {
+    else if (this.message.includes('!social')) {
       this.randomSocial();
     }
-    else if (message.includes('!rssocial')) {
+    else if (this.message.includes('!rssocial')) {
       this.response = `Kenny is making soap all over the internet. Catch him at : Instagram -   bit.ly/2uRox1V Twitter -  bit.ly/2QAZI33 Facebook -  bit.ly/2QFB5lE Youtube - youtube.com/royaltysoaps Or join the fun over at the community discord - https://discordapp.com/invite/PmK33d4`
     };
 
