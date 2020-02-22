@@ -5,7 +5,7 @@ const pschannel = require('../helpers/pubsubchannels');
 
 const Social = function (){
   this.response = null;
-  this.this.message = null
+  this.message = null
   this.random = null;
 };
 
@@ -18,7 +18,7 @@ Social.prototype.bindSocial = function () {
 
     this.rerandom();
 
-    let this.message = data
+    this.message = data
 
     if (this.message.includes('!discord')) {
       this.randomDiscord();

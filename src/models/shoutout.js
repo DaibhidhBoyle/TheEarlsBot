@@ -26,7 +26,7 @@ Shoutout.prototype.bindShoutout = function () {
   PubSub.subscribe(pschannel.shoutout, (msg, data) => {
 
     this.response = ' '
-    this.message = data
+    this.message = data.trim();
 
     if (this.message === '!so'){
 
