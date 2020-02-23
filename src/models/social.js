@@ -27,18 +27,23 @@ Social.prototype.bindSocial = function () {
     else if (this.message.includes('!instagram') || this.message.includes('!insta')) {
       this.randomInsta();
     }
+
     else if (this.message.includes(`!youtube`) || this.message.includes(`!yt`)){
       this.randomYt();
     }
+
     else if (this.message.includes('!twitter')) {
       this.randomTwitter();
     }
+
     else if (this.message.includes(`!facebook`) || this.message.includes('!fb')) {
       this.RandomFb();
     }
+
     else if (this.message.includes('!social')) {
       this.randomSocial();
     }
+    
     else if (this.message.includes('!rssocial')) {
       this.response = `Kenny is making soap all over the internet. Catch him at : Instagram -   bit.ly/2uRox1V Twitter -  bit.ly/2QAZI33 Facebook -  bit.ly/2QFB5lE Youtube - youtube.com/royaltysoaps`
     };

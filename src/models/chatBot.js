@@ -35,7 +35,7 @@ ChatBot.prototype.bindChatBot = function () {
 		client.on('connected', (address, port) => {
 
 
-			client.action(`${this.channel}`, 'Hello everyone. TheSudsBot is here and ready cure what ails ya');
+			client.action(`${this.channel}`, 'Hello everyone. The Suds Bot is here and ready cure what ails ya');
 		});
 
 	});
@@ -49,7 +49,7 @@ ChatBot.prototype.bindChatBot = function () {
 	});
 
 	PubSub.subscribe(pschannel.modonlyresponse, (msg, data) => {
-		if (this.user[`user-type`] === 'mod'){
+		if (this.user[`badges`] === 'mod'){
 			client.action(`${this.channel}`, `${data}`);
 		} else {
 			client.action(`${this.channel}`, `Sorry ${this.user[`display-name`]}, that's a mod only action`);
@@ -61,7 +61,11 @@ ChatBot.prototype.bindChatBot = function () {
 
 	ChatBot.prototype.handler = function () {
 
-		if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
+		if (this.message.includes(`good bot`) || this.message.includes(`bad bot`) ||this.message.includes(`@thesudsbot`)){
+		// || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
+			PubSub.publish(pschannel.bot, this.message);
+		}
+		else if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
 			PubSub.publish(pschannel.social, this.message);
 		}
 		else if (this.message.includes(`!welcome`) || this.message.includes('!sudsbot') || this.message.includes('!royalitysoap') || this.message.includes('!rs') || this.message.includes('!when')|| this.message.includes('!schedule')) {
