@@ -17,8 +17,8 @@ Basic.prototype.bindBasic = function () {
     if (this.message.includes(`!welcome`)){
       this.response = 'Welcome to the Earl of Suds twitch channel. The Earl is Kenny White, a Texan gamer dedicated to great gameplay, engaging with his community and being a wholesome bean. Please make yourself at home and get friendly in chat. '
     }
-    else if (this.message.includes('!soapbot')) {
-      this.response = `I am SoapBot; a bot here to help with whatever you need. Nice to meet you! *add some instructions here*`
+    else if (this.message.includes('!sudsbot')) {
+      this.response = `I am The Suds Bot; a bot here to help with whatever you need. Nice to meet you! *add some instructions here*`
 
     }
     else if(this.message.includes('!royalitysoap') || data.includes('!rs')){

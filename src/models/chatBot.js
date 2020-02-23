@@ -35,7 +35,7 @@ ChatBot.prototype.bindChatBot = function () {
 		client.on('connected', (address, port) => {
 
 
-			client.action(`${this.channel}`, 'Hello everyone. SoapBot is here and ready cure what ails ya');
+			client.action(`${this.channel}`, 'Hello everyone. TheSudsBot is here and ready cure what ails ya');
 		});
 
 	});
@@ -61,7 +61,7 @@ ChatBot.prototype.bindChatBot = function () {
 
 	ChatBot.prototype.handler = function () {
 
-		if (this.message.includes(`!welcome`) || this.message.includes('!soapbot') || this.message.includes('!royalitysoap') || this.message.includes('!rs') || this.message.includes('!when')|| this.message.includes('!schedule')) {
+		if (this.message.includes(`!welcome`) || this.message.includes('!sudsbot') || this.message.includes('!royalitysoap') || this.message.includes('!rs') || this.message.includes('!when')|| this.message.includes('!schedule')) {
 			PubSub.publish(pschannel.basic, this.message);
 		}
 		else if (this.message.includes('!soap')){
