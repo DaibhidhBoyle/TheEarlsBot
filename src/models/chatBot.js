@@ -49,7 +49,9 @@ ChatBot.prototype.bindChatBot = function () {
 	});
 
 	PubSub.subscribe(pschannel.modonlyresponse, (msg, data) => {
-		if (this.user[`badges`] === 'mod'){
+		let badges = Object.keys(this.user[`badges`])
+		let level = badges.includes('moderator') || badges.includes('broadcaster')
+		if (level === true){
 			client.action(`${this.channel}`, `${data}`);
 		} else {
 			client.action(`${this.channel}`, `Sorry ${this.user[`display-name`]}, that's a mod only action`);
