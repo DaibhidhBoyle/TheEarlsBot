@@ -21,21 +21,30 @@ GoodBot.prototype.bindGoodBot = function () {
     this.random = random.getNum(3);
 
     if(this.message.includes('good bot')) {
-      this.response = 'That warms the cogs of my little bot heart :) thank you for your feed back'
+      this.randomGood();
     }
     else if (this.message.includes('bad bot')) {
-      this.response = `Sorry, I'm a young bot and still make mistakes. :( If you find any issues with my service please whisper dai101 here on twitch and he'll try to get that patched up`
+      this.response = `Sorry, I'm a young bot and still make mistakes. :( If you find any issues with my functionality please whisper dai101 here on twitch and he'll try to get that patched up`
     }
     else if (this.message.includes('@thesudsbot')) {
       this.randomNotice();
     };
 
-
-
-
     PubSub.publish(pschannel.response, this.response);
   });
 };
+
+GoodBot.prototype.randomGood = function () {
+  if (this.random === 0){
+    this.response = 'That warms the cogs of my little bot heart :) thank you for your feed back'
+  }
+  else if (this.random === 1){
+    this.response = `Aww shucks. You'll make me blush. Thank you for your feed back`
+  }
+  else if (this.random === 2){
+    this.response = `Thank you for your feed back. I'll keep trying my hardest`
+  }
+}
 
 GoodBot.prototype.randomNotice = function () {
   if (this.random === 0){

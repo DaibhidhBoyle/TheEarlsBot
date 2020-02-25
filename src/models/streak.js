@@ -69,7 +69,7 @@ Streak.prototype.bindStreak = function () {
     else if (this.count >= 25){
       this.response = `Hot Dang! The Earl of Suds has streamed everyday for ${this.count} days! Now that's impressive.`;
     }else {
-      this.response = `error` + ` ` + `${this.count}`
+      this.response = `There's been a small problem tracking this treak. Please message da101 here and he'll get that sorted asap. Sorry for the inconvience`
     }
 
     PubSub.publish(pschannel.response, this.response);

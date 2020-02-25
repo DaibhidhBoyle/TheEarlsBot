@@ -20,7 +20,7 @@ Soap.prototype.bindSoap = function () {
   PubSub.subscribe(pschannel.soap, async (msg, data) => {
     this.response = ' '
     this.message = data.trim();
-    
+
     if (this.message === '!soap'){
       this.response = `It looks like your trying to search for royality soap products but haven't said what you're searching for :( a good example would be typing '!soap honey'`
     };
@@ -56,14 +56,14 @@ Soap.prototype.bindSoap = function () {
         if (links.length !== products.length){
           this.response = `That could be a lot of great products! Check them all out here: ${this.url}`;
         }
-        else if (links.length === 0){
+        else if (links.length === 0 && this.message !== '!soap'){
           this.response = `I couldn't find anything matching your search results. :( but you can checkout out Royality Soap's whole range at www.royaltysoaps.com`;
         }
         else if (links.length === 1){
           this.response = `I found the ${products[0]} available at ${this.shortUrl}`;
         }
         else if (links.length > 1){
-          this.response = `There's a lot of great products matching your search! Like the ${products[0]} Available at ${this.shortUrl}. Have a look at them all at ${this.url}!`;
+          this.response = `There's a lot of great products matching your search! Like the ${products[0]} Available at ${this.shortUrl}. Have a look at them all at ${this.url}` + ` ` + `!`;
         }
 
 
