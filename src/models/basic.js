@@ -18,7 +18,7 @@ Basic.prototype.bindBasic = function () {
       this.response = 'Welcome to the Earl of Suds twitch channel. The Earl is Kenny White, a Texan gamer dedicated to great gameplay, engaging with his community and being a wholesome bean. Please make yourself at home and get friendly in chat. '
     }
     else if (this.message.includes('!sudsbot')) {
-      this.response = `I am The Suds Bot; a bot here to help with whatever you need. Nice to meet you! *add some instructions here*`
+      this.response = `I am The Suds Bot; a bot here to help with whatever you need. Nice to meet you! I have a bunch of neat commands. Try using !soap find new soap or !streak to find out how many days in a row the Earl has been on twitch.`
 
     }
     else if(this.message.includes('!royalitysoap') || data.includes('!rs')){

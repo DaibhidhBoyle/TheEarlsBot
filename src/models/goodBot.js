@@ -1,6 +1,7 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const storage = require('node-persist');
+const random = require('../helpers/random.js');
 const pschannel = require('../helpers/pubsubchannels');
 
 const GoodBot = function (){
@@ -17,7 +18,7 @@ GoodBot.prototype.bindGoodBot = function () {
     this.response = ' '
     this.message = data.trim();
 
-    this.rerandom();
+    this.random = random.getNum(3);
 
     if(this.message.includes('good bot')) {
       this.response = 'That warms the cogs of my little bot heart :) thank you for your feed back'
@@ -34,10 +35,6 @@ GoodBot.prototype.bindGoodBot = function () {
 
     PubSub.publish(pschannel.response, this.response);
   });
-};
-
-GoodBot.prototype.rerandom = function () {
-  this.random = Math.floor(Math.random() * 3);
 };
 
 GoodBot.prototype.randomNotice = function () {
