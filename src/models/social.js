@@ -57,22 +57,22 @@ Social.prototype.bindSocial = function () {
 Social.prototype.randomDiscord = function () {
 
   if(this.random === 0){
-    this.response = `Can't get enough of the Earl and the chat? Join us at discordapp.com/invite/PmK33d4 There's a bunch of pet pics `;
+    this.response = `Can't get enough of the Earl and the chat? Join us on discord at discordapp.com/invite/PmK33d4 There's a bunch of pet pics `;
   }
   else if (this.random === 1){
-    this.response = `Need more positivity in your life? Join the community at discordapp.com/invite/PmK33d4`;
+    this.response = `Need more positivity in your life? Join the community on discord at discordapp.com/invite/PmK33d4`;
   }
   else if (this.random === 2){
-    this.response = `You bring the chat and I'll bring the chips. Meet you at discordapp.com/invite/PmK33d4`;
+    this.response = `You bring the chat and I'll bring the chips. Meet you on the discord at discordapp.com/invite/PmK33d4`;
   };
 };
 
 Social.prototype.randomInsta = function () {
   if(this.random === 0){
-    this.response = `Wanna more of Kenny's face? Get it at bit.ly/theearlofsuds Or maybe you're more intrested in the soap he makes? Try bit.ly/2uRox1V`
+    this.response = `Wanna more of Kenny's face? Get it at bit.ly/theearlofsuds Or maybe you're more interested in the soap he makes? Try bit.ly/2uRox1V`
   }
   else if(this.random === 1){
-    this.response = `Forget streamer! Kennys born to be a model at  bit.ly/theearlofsuds Or checkout his day job making soap at bit.ly/2uRox1V`
+    this.response = `Forget streamer! Kenny's born to be a model at  bit.ly/theearlofsuds Or checkout his day job making soap at bit.ly/2uRox1V`
   }
   else if(this.random === 2){
     this.response = `Don't believe Kenny has legs? Get photo evidence at bit.ly/theearlofsuds Don't believe Kenny makes soap? Proof here bit.ly/2uRox1V but maybe work on your trust issues`
@@ -85,7 +85,7 @@ Social.prototype.randomYt = function () {
     this.response = `See how The Earl of Suds got his name at youtube.com/royaltysoaps or get a bit more personal with Kenny's channel www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`;
   }
   else if(this.random === 1){
-    this.response = `Score some soap secrets at youtube.com/royaltysoaps or see Kenny's solo shanaganes at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`
+    this.response = `Score some soap secrets at youtube.com/royaltysoaps or see Kenny's solo shenanigans at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`
   }
   else if(this.random === 2){
     this.response = `See the Earl cooking up a sudsy batch of soap at youtube.com/royaltysoaps or get a closer look at the man behind the title at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`
@@ -95,13 +95,13 @@ Social.prototype.randomYt = function () {
 
 Social.prototype.randomTwitter = function () {
   if(this.random === 0){
-    this.response = `Catch your bitesized soap updates at bit.ly/2QAZI33 ... that's poorly worded. Please don't eat soap`;
+    this.response = `Catch your bite sized soap updates at bit.ly/2QAZI33 ... that's poorly worded. Please don't eat soap`;
   }
   else if(this.random === 1){
     this.response = `Slide some soap into your twitter feed at bit.ly/2QAZI33`;
   }
   else if(this.random === 2){
-    this.response = `Royality Soaps has a long running twitter feud with boring bath times. Follow the drama at bit.ly/2QAZI33`;
+    this.response = `Royalty Soaps has a long running twitter feud with boring bath times. Follow the drama at bit.ly/2QAZI33`;
   }
 
 };

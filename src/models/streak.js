@@ -49,10 +49,10 @@ Streak.prototype.bindStreak = function () {
       this.response = `Kenny is just starting a new streak! This is day 1`;
     }
     else if (this.count === 2 || this.count === 3){
-      this.response = `We're just getting started. Current streak is ${this.count} days!`;
+      this.response = `We're just getting started. Current streak is ${this.count} days streaming!`;
     }
     else if (this.count >= 4 && this.count <7){
-      this.response = `Things are heating up! Kennys streak is ${this.count} days in a row`;
+      this.response = `Things are heating up! Kennys streak is ${this.count} days streaming in a row`;
     }
     else if (this.count === 7){
       this.response = `Wow! The Earls has streamed every day for a week straight!`;
@@ -67,9 +67,9 @@ Streak.prototype.bindStreak = function () {
       this.response = `The Earl's on a hot streak; he's streamed for a mighty ${this.count} days in a row!`;
     }
     else if (this.count >= 25){
-      this.response = `Hot Dang! The Earl of Suds has streamed everyday for ${this.count} days! Now that's impressive.`;
+      this.response = `Hot Dang! The Earl of Suds has streamed every day for ${this.count} days! Now that's impressive.`;
     }else {
-      this.response = `There's been a small problem tracking this treak. Please message da101 here and he'll get that sorted asap. Sorry for the inconvience`
+      this.response = `There's been a small problem tracking this streak. Please message da101 here on twitch and he'll get that sorted asap. Sorry for the  inconvenience`
     }
 
     PubSub.publish(pschannel.response, this.response);

@@ -35,7 +35,7 @@ ChatBot.prototype.bindChatBot = function () {
 		client.on('connected', (address, port) => {
 
 
-			client.action(`${this.channel}`, 'Hello everyone. The Suds Bot is here and ready cure what ails ya');
+			client.action(`${this.channel}`, 'Hello everyone. The Suds Bot is here and ready help with whatever you need');
 		});
 
 	});

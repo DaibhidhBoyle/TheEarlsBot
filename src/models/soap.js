@@ -57,7 +57,7 @@ Soap.prototype.bindSoap = function () {
           this.response = `That could be a lot of great products! Check them all out here: ${this.url}`;
         }
         else if (links.length === 0 && this.message !== '!soap'){
-          this.response = `I couldn't find anything matching your search results. :( but you can checkout out Royality Soap's whole range at www.royaltysoaps.com`;
+          this.response = `I couldn't find anything matching your search results. :( but you can checkout out Royalty Soap's whole range at www.royaltysoaps.com`;
         }
         else if (links.length === 1){
           this.response = `I found the ${products[0]} available at ${this.shortUrl}`;
