@@ -80,12 +80,12 @@ Shoutout.prototype.bindShoutout = function () {
       var wordAfterAt = str.slice(afterAt);
       var nextSpace = wordAfterAt.indexOf(` `);
       if (nextSpace === -1){
-        this.shoutoutList.indexOf(wordAfterAt) === -1 ? this.shoutoutList.push(wordAfterAt) : console.log("nah bruh");
+        if (this.shoutoutList.indexOf(wordAfterAt) === -1) this.shoutoutList.push(wordAfterAt);
         this.messageRemaining = null
       } else {
         endTag = afterAt + nextSpace
         let taggedName = str.slice(afterAt, endTag)
-        this.shoutoutList.indexOf(taggedName) === -1 ? this.shoutoutList.push(taggedName) : console.log("nah bruh");
+        if (this.shoutoutList.indexOf(taggedName) === -1) this.shoutoutList.push(taggedName);
         this.messageRemaining = str.slice(endTag);
       }
     }
