@@ -17,7 +17,7 @@ const Soap = function (){
 
 Soap.prototype.bindSoap = function () {
 
-  PubSub.subscribe(pschannel.soap, async (msg, data) => {
+  PubSub.subscribe(pschannel.soap, (msg, data) => {
     this.response = ' '
     this.message = data.trim();
 
