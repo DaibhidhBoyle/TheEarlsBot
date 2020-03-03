@@ -8,19 +8,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "PubSub": "^3.6.0",
     "cheerio": "^1.0.0-rc.3",
-    "debug": "^4.1.1",
-    "express": "^4.17.1",
     "node-persist": "^2.0.1",
-    "node-url-shortener": "^1.0.1",
     "promise": "^8.0.3",
     "pubsub-js": "^1.8.0",
     "request": "^2.88.0",
-    "shorturl": "0.0.3",
     "tinyurl": "^1.1.5",
-    "tmi.js": "^1.5.0",
-    "turl": "^1.1.2"
+    "tmi.js": "^1.5.0"
   },
   "repository": {
     "type": "git",
