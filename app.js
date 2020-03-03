@@ -9,23 +9,29 @@ const Soap = require('./src/models/soap.js');
 const GoodBot = require('./src/models/goodBot.js');
 
 
-const goodBot = new GoodBot
-goodBot.bindGoodBot();
-
-const soap = new Soap();
-soap.bindSoap();
-
-const streak = new Streak();
-streak.bindStreak();
-
-const shoutout = new Shoutout();
-shoutout.bindShoutout();
-
 const social = new Social();
 social.bindSocial();
 
 const basic = new Basic();
 basic.bindBasic();
+
+const soap = new Soap();
+soap.bindSoap();
+
+const shoutout = new Shoutout();
+shoutout.bindShoutout();
+
+const streak = new Streak();
+streak.bindStreak();
+
+const goodBot = new GoodBot
+goodBot.bindGoodBot();
+
+
+
+
+
+
 
 const chatBot = new ChatBot();
 chatBot.bindChatBot();

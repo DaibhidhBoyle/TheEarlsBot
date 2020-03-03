@@ -14,16 +14,9 @@ const Shoutout = function (){
   this.shoutoutList = [];
   this.random = null;
   this.counter = 0
+  this.messageRemaining = null;
   this.additionalText = null;
 
-  this.num1 = null;
-  this.num2 = null;
-  this.num3 = null;
-  this.num4 = null;
-
-  this.str1 = null;
-  this.str2 = null;
-  this.str3 = null;
 };
 
 
@@ -45,7 +38,7 @@ Shoutout.prototype.bindShoutout = function () {
 
       while (this.message !== null){
         this.slicemessage(this.message);
-        this.message = this.str3;
+        this.message = this.messageRemaining;
       };
 
       let arrayLength = this.shoutoutList.length;
@@ -57,7 +50,6 @@ Shoutout.prototype.bindShoutout = function () {
             this.response = this.response + ' ' + 'Or'
           }
           this.random = random.getNum(10);
-          // hat = `Checkout www.twitch.tv/${this.shoutoutList[counter]}`
           this.channelMessage()
           this.response = this.response + ` ` + this.additionalText
           this.counter ++
@@ -80,23 +72,25 @@ Shoutout.prototype.bindShoutout = function () {
 
   Shoutout.prototype.slicemessage = function (str) {
 
-    this.num1 = str.indexOf(`@`);
-    if(this.num1 !== -1){
-      this.num2 = this.num1 + 1
-      this.str1 = str.slice(this.num2);
-      this.num3 = this.str1.indexOf(` `);
-      if (this.num3 === -1){
-        this.shoutoutList.push(this.str1);
-        this.str3 = null
+// this.num1 > at, this.nnum2 > afterAt, string 1 > wordaAfterAt,, num3> nextSpace
+
+    var at = str.indexOf(`@`);
+    if(at !== -1){
+      var afterAt = at + 1
+      var wordAfterAt = str.slice(afterAt);
+      var nextSpace = wordAfterAt.indexOf(` `);
+      if (nextSpace === -1){
+        this.shoutoutList.indexOf(wordAfterAt) === -1 ? this.shoutoutList.push(wordAfterAt) : console.log("nah bruh");
+        this.messageRemaining = null
       } else {
-        this.num4 = this.num2 + this.num3
-        this.str2 = str.slice(this.num2, this.num4)
-        this.shoutoutList.push(this.str2);
-        this.str3 = str.slice(this.num4);
+        endTag = afterAt + nextSpace
+        let taggedName = str.slice(afterAt, endTag)
+        this.shoutoutList.indexOf(taggedName) === -1 ? this.shoutoutList.push(taggedName) : console.log("nah bruh");
+        this.messageRemaining = str.slice(endTag);
       }
     }
     else {
-      this.str3 = null
+      this.messageRemaining = null
     }
 
   };
