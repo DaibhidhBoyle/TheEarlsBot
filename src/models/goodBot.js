@@ -26,6 +26,9 @@ GoodBot.prototype.bindGoodBot = function () {
     else if (this.message.includes('bad bot')) {
       this.response = `Sorry, I'm a young bot and still make mistakes. :( If you find any issues with my functionality please whisper dai101 here on twitch and he'll try to get that patched up`
     }
+    else if (this.message.includes('!sudsbot')) {
+      this.response = `I am The Suds Bot; a chatbot here to help with whatever you need. Nice to meet you! I have a bunch of neat commands, Try using !soap and description of a soap you like to help find new one or !streak to find out how many days in a row the Earl has been on twitch.`
+    }
     else if (this.message.includes('@thesudsbot')) {
       this.randomNotice();
     };

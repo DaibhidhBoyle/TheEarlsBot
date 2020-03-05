@@ -66,7 +66,7 @@ ChatBot.prototype.bindChatBot = function () {
 		if (this.message.includes(`!discord`) || this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social')||  this.message.includes('!rssocial')) {
 			PubSub.publish(pschannel.social, this.message);
 		}
-		else if (this.message.includes(`!welcome`) || this.message.includes('!sudsbot') || this.message.includes('!royalitysoap') || this.message.includes('!rs') || this.message.includes('!when')|| this.message.includes('!schedule')) {
+		else if (this.message.includes(`!welcome`)  || this.message.includes('!royalitysoap') || this.message.includes('!rs') || this.message.includes('!when')|| this.message.includes('!schedule')) {
 			PubSub.publish(pschannel.basic, this.message);
 		}
 		else if (this.message.includes('!soap')){
@@ -78,7 +78,7 @@ ChatBot.prototype.bindChatBot = function () {
 		else if (this.message.includes(`!streak`)){
 			PubSub.publish(pschannel.streak, ' ');
 		}
-		else if (this.message.includes(`good bot`) || this.message.includes(`bad bot`) ||this.message.includes(`@thesudsbot`)){
+		else if (this.message.includes(`good bot`) || this.message.includes(`bad bot`) || this.message.includes('!sudsbot') ||this.message.includes(`@thesudsbot`)){
 			PubSub.publish(pschannel.bot, this.message);
 		}
 	};
