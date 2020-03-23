@@ -49,8 +49,12 @@ ChatBot.prototype.bindChatBot = function () {
 	});
 
 	PubSub.subscribe(pschannel.modonlyresponse, (msg, data) => {
-		let badges = Object.keys(this.user[`badges`])
-		let level = badges.includes('moderator') || badges.includes('broadcaster')
+		let badges = null
+		let level = false
+		if (this.user[`badges`] !== null){
+			badges = Object.keys(this.user[`badges`])
+			level = badges.includes('moderator') || badges.includes('broadcaster')
+		}
 		if (level === true){
 			client.action(`${this.channel}`, `${data}`);
 		} else {
