@@ -2,6 +2,7 @@ const Options = require('./src/models/options.js');
 const Config = require('./src/models/config.js');
 const ChatBot = require('./src/models/chatBot.js');
 const Basic = require('./src/models/basic.js');
+const Friend = require('./src/models/friends.js');
 const Social = require('./src/models/social.js');
 const Shoutout = require('./src/models/shoutout.js');
 const Streak = require('./src/models/streak.js');
@@ -14,6 +15,10 @@ social.bindSocial();
 
 const basic = new Basic();
 basic.bindBasic();
+
+const friend = new Friend();
+friend.bindFriend();
+
 
 const soap = new Soap();
 soap.bindSoap();
