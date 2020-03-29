@@ -79,8 +79,6 @@ Soap.prototype.bindSoap = function () {
         return res;
     })
 
-    //
-
   };
 };
 

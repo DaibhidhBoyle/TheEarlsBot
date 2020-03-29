@@ -41,9 +41,15 @@ Social.prototype.bindSocial = function () {
       this.RandomFb();
     }
 
+    else if (this.message.includes('!po')) {
+      this.randomPo();
+    }
+
     else if (this.message.includes('!social')) {
       this.randomSocial();
     }
+
+
 
     else if (this.message.includes('!rssocial')) {
       this.response = `Kenny is making soap all over the internet. Catch him at : Instagram -   bit.ly/2uRox1V Twitter -  bit.ly/2QAZI33 Facebook -  bit.ly/2QFB5lE Youtube - youtube.com/royaltysoaps`
@@ -115,6 +121,19 @@ Social.prototype.RandomFb = function () {
   }
   else if(this.random === 2){
     this.response = `See the royal court and their soap on your facebook at bit.ly/2QFB5lE`;
+  }
+
+};
+
+Social.prototype.randomPo = function () {
+  if(this.random === 0){
+    this.response = `Wanna give Kenny a little gift, he'd love that! Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. She'll pass it along.`;
+  }
+  else if(this.random === 1){
+    this.response = `Kenny doesn't have his own PO box, but royality soaps does. Send your mail to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll get it to him.`;
+  }
+  else if(this.random === 2){
+    this.response = `Wanna send Kenny fan mail? He's used it, he promises. Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. She'll read it to him- kenny is too popular to do his own reading.`;
   }
 
 };

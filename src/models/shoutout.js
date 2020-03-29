@@ -10,6 +10,7 @@ var Promise = require('promise');
 const Shoutout = function (){
   this.response = null;
   this.message = null;
+  this.list = null;
 
   this.shoutoutList = [];
   this.random = null;
@@ -21,7 +22,10 @@ const Shoutout = function (){
 
 
 Shoutout.prototype.bindShoutout = function () {
-  PubSub.subscribe(pschannel.shoutout, (msg, data) => {
+  PubSub.subscribe(pschannel.shoutout, async (msg, data) => {
+
+    var end = await this.fetch();
+    console.log(end);
 
     this.response = ' '
     this.message = data.trim();
@@ -72,7 +76,7 @@ Shoutout.prototype.bindShoutout = function () {
 
   Shoutout.prototype.slicemessage = function (str) {
 
-// this.num1 > at, this.nnum2 > afterAt, string 1 > wordaAfterAt,, num3> nextSpace
+
 
     var at = str.indexOf(`@`);
     if(at !== -1){
@@ -95,6 +99,12 @@ Shoutout.prototype.bindShoutout = function () {
 
   };
 
+  Shoutout.prototype.fetch = async function () {
+    var games = await api.get('https://api.twitch.tv/helix/games/top')
+    var result = await games.data
+    return result
+
+  }
   Shoutout.prototype.channelMessage = function () {
     switch (this.random) {
       case 0:
