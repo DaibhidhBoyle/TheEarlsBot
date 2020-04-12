@@ -14,7 +14,7 @@ Friend.prototype.bindFriend = function () {
     this.message = data
 
     if (this.message.includes('!fc') || this.message.includes('!friendcode')|| this.message.includes(`!switch`)) {
-      this.response = `Be the Earl's friend on the switch with the code SW-5903_4709-9098. He'll accept your request as soon as possible`
+      this.response = `Be the Earl's friend on the switch with the code SW-5903_4709-9098. He'll accept your request as soon as possible!`
     }
 
     else if (this.message.includes(`!playstaion`) || this.message.includes(`!ps`)){

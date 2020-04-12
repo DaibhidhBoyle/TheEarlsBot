@@ -22,10 +22,8 @@ const Shoutout = function (){
 
 
 Shoutout.prototype.bindShoutout = function () {
-  PubSub.subscribe(pschannel.shoutout, async (msg, data) => {
+  PubSub.subscribe(pschannel.shoutout, (msg, data) => {
 
-    var end = await this.fetch();
-    console.log(end);
 
     this.response = ' '
     this.message = data.trim();
@@ -99,12 +97,6 @@ Shoutout.prototype.bindShoutout = function () {
 
   };
 
-  Shoutout.prototype.fetch = async function () {
-    var games = await api.get('https://api.twitch.tv/helix/games/top')
-    var result = await games.data
-    return result
-
-  }
   Shoutout.prototype.channelMessage = function () {
     switch (this.random) {
       case 0:

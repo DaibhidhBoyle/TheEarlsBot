@@ -127,13 +127,13 @@ Social.prototype.RandomFb = function () {
 
 Social.prototype.randomPo = function () {
   if(this.random === 0){
-    this.response = `Wanna give Kenny a little gift, he'd love that! Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. She'll pass it along.`;
+    this.response = `Wanna give Kenny a little gift, he'd love that! Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll pass it along to him`;
   }
   else if(this.random === 1){
     this.response = `Kenny doesn't have his own PO box, but royality soaps does. Send your mail to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll get it to him.`;
   }
   else if(this.random === 2){
-    this.response = `Wanna send Kenny fan mail? He's used it, he promises. Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. She'll read it to him- kenny is too popular to do his own reading.`;
+    this.response = `Wanna send Kenny fan mail? He's used it, get it all the time, he promises. Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll read it to him- kenny is too popular to do his own reading`;
   }
 
 };
