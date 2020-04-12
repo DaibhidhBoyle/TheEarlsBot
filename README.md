@@ -1,6 +1,18 @@
 # TheEarlsBot
 
+A customized twitch Bot created to directly interact with The Earl of Suds twitch channel chat. It is written with modular javascript  using pubsub communication.
+
+# Getting Started
+
+Prerequisite: - Node, Editing Environment(atom,etc.)
+
+Running:-  To start program pull from git, npm init and npm install. This will install the relevant dependencies (cheerio V 1.0.0-rc.3, node-persist V 2.0.1, promise V 8.0.3, pubsub-js V 1.8.0, request V 2.88.0, tinyurl V 1.1.5 and  tmi.js V1.5.0). Customize the DummyConfig.js file to contain relevant identification: username; relevant channel and authentication code (https://dev.twitch.tv/docs/authentication/ for details). Then rename dummyConfig.js to Config.js and run with ‘node app.js’.
+
+
+# Functionality
+
 Basic Commands
+
 A set of commands to get new viewers familiar with the basics of your brand; from you’re name to why you talk about soap. These commands come in handy with lots of people entering the chat that aren’t frequent viewers (like in raids or if your gaining traction on a twitch category), answering their FAQs as a group and starting conversations.
  
 Start-up Messsage:- Hello everyone. The Suds Bot is here and ready help with whatever you need
@@ -21,7 +33,6 @@ Limitations: - Although these commands can help people get their heads around a 
 These commands are not dynamic. If anything changes, like your schedule, they would have to be altered on a programming level.
 
 Social Commands
-
 
 Commands to direct people to your other social media platforms, keeping them engaging cross platform. These commands are particularly useful to mobile users that can’t see your widgets and rely on chat. Having the links directly rather than having to search them out will make them more likely to follow your projects across other site in turn keeping you in their thoughts, bring them back to the twitch stream. As an added benefit most have are phrased in a couple of different ways so regular watchers won’t get bored of seeing the same message repeatedly.
 
@@ -143,6 +154,7 @@ This command can only be used to create twitch links. If there is an interest in
 
 
 Streak Command
+
 A command designed to inform viewer the number of successive days you’ve streamed. I notice for a while you were streaming daily, this command bring the community into that process by giving replies costumed to how many days you’ve streamed in a row. This will bring viewer coming back with an easy way to track how long you’re streak has been going and allows for them to keep up with streak goals you may set(like play fornite on the 14th day in a row of streaming). 
 
 Command:- !streak
@@ -169,6 +181,7 @@ Error catch:- There's been a small problem tracking this streak. Please message 
 Limitations:- The program tracks days by when it is started up not by when you’re stream is active. The prevents confusion in the program over if you stream on the same day or if you have to restart a stream but would mean you’d have to start the program on each stream and cannot leave it running till the next stream otherwise it would not be recorded on the streak. This also leaves an weakness where if you start the program without streaming you could get inaccurate reading on this command; maintaining a streak that should be lost.
 
 Soap Command
+
 This command takes in a search term from the viewer and finds matching products from the royalty soaps website. This will give easier access for viewer to buy products from royalty soap and start conversations in chat. It is searched for dynamically so any new product on the website can be searched by this command automatically 
 
 Command:- !soap {search term}
@@ -186,6 +199,7 @@ Limitations:- This command goes directly to the royalty soaps website to complet
 The error catch for the command has a link related to the search. If the program acts very unexpectedly this link may be defunct.
 
 Bot Maintenance Commands 
+
 These commands give the program a bit of personality in chat, get some information about its functionality and allows for viewer who encounter bugs to report them reducing frustration. This will make the program feel more natural to have in chat and help viewers adopt its use.
 
 Command:- !sudsbot
