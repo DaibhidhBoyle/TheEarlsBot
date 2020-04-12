@@ -104,6 +104,20 @@ Limitations:- Similar to the last bunch of commands, these are all static and if
 Some replies are wordy and may leave viewer lost on the information they were looking for. This is counteracted by the links being highlighted on the twitch chat but if needed the copy can be stripped back to essentials
 Earl of Suds and Royalty Soap links are mingled into a single reply. The copy should make it clear which is which and by presenting both viewer are more likely to follow both pages simultaneously. However if viewers get confused by this these commands will serve both brands better by being split into separate commands.
 
+Friend Code commands
+
+These commands allows for viewers easy access to streamer's friend codes on multiple platforms, this is useful to engage with users directly over games. These commands can be utilised to foster a sense of connection with the streamer and the community driving repeat viewership. The message is stipped back to allow for easy readablity, as these message often require repeat reading, while emphasising a patience for the request to be responded to.
+
+Command:- !fc/!friendcode/!switch
+
+Reply:- Be the Earl's friend on the switch with the code SW-5903_4709-9098. He'll accept your request as soon as possible!
+
+Command:- !ps/!psn/!playstation
+
+Reply:- Add smobuchin on playstaion to play along side the Earl!
+
+Limitations:- These messages are static aswell so would need to changed in the programming directly if there is a need to alter it. Beyond that there is no filtering methods to shift out bad actors or serial frienders. This would be diffcult to add in without human moderation
+
 Shout Out Command
 
 This command can produce links to other twitch streamer.  Useful in building a community of streamers that support each other, sharing audience through co-promotion and encourages raids. This command is superior to pre-packaged ones as it allows for multiple shout outs in one commands pulling from various adducting sentences so the reply doesn’t feel stale. It can shout out unlimited channels in one command until twitch universal chat length cap is hit. This command is limited to mods to stop spamming self-promotions from bad actors.
