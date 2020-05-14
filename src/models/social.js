@@ -52,7 +52,7 @@ Social.prototype.bindSocial = function () {
 
 
     else if (this.message.includes('!rssocial')) {
-      this.response = `Kenny is making soap all over the internet. Catch him at : Instagram -   bit.ly/2uRox1V Twitter -  bit.ly/2QAZI33 Facebook -  bit.ly/2QFB5lE Youtube - youtube.com/royaltysoaps`
+      this.response = `Kenny's family is a soap making empire. Catch them at : Instagram -   bit.ly/2uRox1V Twitter -  bit.ly/2QAZI33 Facebook -  bit.ly/2QFB5lE Youtube - youtube.com/royaltysoaps`
     };
 
     PubSub.publish(pschannel.response, this.response);
@@ -75,26 +75,26 @@ Social.prototype.randomDiscord = function () {
 
 Social.prototype.randomInsta = function () {
   if(this.random === 0){
-    this.response = `Wanna more of Kenny's face? Get it at bit.ly/theearlofsuds Or maybe you're more interested in the soap he makes? Try bit.ly/2uRox1V`
+    this.response = `Wanna more of Kenny's face? Get it at bit.ly/theearlofsuds`
   }
   else if(this.random === 1){
-    this.response = `Forget streamer! Kenny's born to be a model at  bit.ly/theearlofsuds Or checkout his day job making soap at bit.ly/2uRox1V`
+    this.response = `Forget streamer! Kenny's born to be a model at  bit.ly/theearlofsuds`
   }
   else if(this.random === 2){
-    this.response = `Don't believe Kenny has legs? Get photo evidence at bit.ly/theearlofsuds Don't believe Kenny makes soap? Proof here bit.ly/2uRox1V but maybe work on your trust issues`
+    this.response = `Don't believe Kenny has legs? Get proof here bit.ly/theearlofsuds `
   }
 
 };
 
 Social.prototype.randomYt = function () {
   if(this.random === 0){
-    this.response = `See how The Earl of Suds got his name at youtube.com/royaltysoaps or get a bit more personal with Kenny's channel www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`;
+    this.response = `Get to know Kenny more at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`;
   }
   else if(this.random === 1){
-    this.response = `Score some soap secrets at youtube.com/royaltysoaps or see Kenny's solo shenanigans at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`
+    this.response = `See more of Kenny's shenanigans at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`
   }
   else if(this.random === 2){
-    this.response = `See the Earl cooking up a sudsy batch of soap at youtube.com/royaltysoaps or get a closer look at the man behind the title at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`
+    this.response = `Get a closer look at the man behind the title at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`
   }
 
 };

@@ -49,38 +49,38 @@ Soap.prototype.bindSoap = function () {
         });
 
         await this.ShortenLink(`http://www.royaltysoaps.com${links[0]}`);
-        await short.then(result => {
-          this.shortUrl = result
-        });
+          await short.then(result => {
+            this.shortUrl = result
+          });
 
-        if (links.length !== products.length){
-          this.response = `That could be a lot of great products! Check them all out here: ${this.url}`;
-        }
-        else if (links.length === 0 && this.message !== '!soap'){
-          this.response = `I couldn't find anything matching your search results. :( but you can checkout out Royalty Soap's whole range at www.royaltysoaps.com`;
-        }
-        else if (links.length === 1){
-          this.response = `I found the ${products[0]} available at ${this.shortUrl}`;
-        }
-        else if (links.length > 1){
-          this.response = `There's a lot of great products matching your search! Like the ${products[0]} Available at ${this.shortUrl}. Have a look at them all at ${this.url}` + ` ` + `!`;
-        }
+          if (links.length !== products.length){
+            this.response = `That could be a lot of great products! Check them all out here: ${this.url}`;
+          }
+          else if (links.length === 0 && this.message !== '!soap'){
+            this.response = `I couldn't find anything matching your search results. :( but you can checkout out Royalty Soap's whole range at www.royaltysoaps.com`;
+          }
+          else if (links.length === 1){
+            this.response = `I found the ${products[0]} available at ${this.shortUrl}`;
+          }
+          else if (links.length > 1){
+            this.response = `There's a lot of great products matching your search! Like the ${products[0]} Available at ${this.shortUrl}. Have a look at them all at ${this.url}` + ` ` + `!`;
+          }
 
 
-        PubSub.publish(pschannel.response, this.response);
-      };
+          PubSub.publish(pschannel.response, this.response);
+        };
+      });
     });
-  });
 
 
-  Soap.prototype.ShortenLink= (url) => {
+    Soap.prototype.ShortenLink= (url) => {
 
       short = TinyURL.shorten(url).then(res => {
         return res;
-    })
+      })
 
+    };
   };
-};
 
 
-module.exports = Soap;
+  module.exports = Soap;
