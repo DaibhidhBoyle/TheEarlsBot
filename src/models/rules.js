@@ -13,18 +13,15 @@ Rules.prototype.bindRules = function () {
 
     this.message = data
 
-    if (this.message.includes('!clean'))
+    if (this.message.includes('!clean')){
       this.response = `CLEAN CHAT ONLY!  If I can talk clean you can type clean >:3`
     }
-
     else if (this.message.includes(`!bully`)){
       this.response = ` No bullying / homophobia / hate towards religion & personal beliefs `
-    };
-
+    }
     else if (this.message.includes(`!flirt`)){
       this.response = `No  e x c e s s i v e  f l i r t i n g  p l z`
-    };
-
+    }
     else if (this.message.includes(`!hammer`)){
       this.response = `Respect the mods or get the hammer`
     };

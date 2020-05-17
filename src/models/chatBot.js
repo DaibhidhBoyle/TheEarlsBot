@@ -77,7 +77,7 @@ ChatBot.prototype.bindChatBot = function () {
 			PubSub.publish(pschannel.friend, this.message);
 		}
 		else if (this.message.includes(`!clean`)  || this.message.includes('!bully') || this.message.includes('!flirt') || this.message.includes('!hammer')){
-			PubSub.publish(pschannel.friend, this.message);
+			PubSub.publish(pschannel.rules, this.message);
 		}
 		else if (this.message.includes('!soap')){
 			PubSub.publish(pschannel.soap, this.message);

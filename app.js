@@ -21,7 +21,7 @@ const friend = new Friend();
 friend.bindFriend();
 
 const rules = new Rules();
-friend.bindRules();
+rules.bindRules();
 
 const soap = new Soap();
 soap.bindSoap();
