@@ -25,7 +25,7 @@ Basic.prototype.bindBasic = function () {
     }
     else if(this.message.includes('!rules')){
       this.response = `1. CLEAN CHAT ONLY!  If I can talk clean you can type clean | 2. No bullying / homophobia / hate towards religion & personal beliefs | 3. No  excessive  flirting | 4. Respect my mods or get the hammer`
-    };
+    }
 
 
     PubSub.publish(pschannel.response, this.response);
