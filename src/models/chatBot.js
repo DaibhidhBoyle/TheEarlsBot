@@ -130,6 +130,8 @@ ChatBot.prototype.bindChatBot = function () {
 		else if (this.message === `good bot` || this.message === `bad bot` || this.message.includes(`@thesudsbot`)){
 			PubSub.publish(pschannel.bot, this.message);
 		}
+		//counters
+		else if (this.counter.includes(this.message))
 	};
 
 	ChatBot.prototype.levelHandler = function (targetChannel1, targetChannel2, level, message) {
