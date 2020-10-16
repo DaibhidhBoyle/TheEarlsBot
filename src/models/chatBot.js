@@ -2,6 +2,7 @@ const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const Options = require('./options.js');
 const pschannel = require('../helpers/pubsubchannels');
+<<<<<<< HEAD
 const permissions = require('../helpers/checkPermissions.js');
 
 const low = require('lowdb')
@@ -9,14 +10,19 @@ const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync('counterDb.json')
 const db = low(adapter)
+=======
+>>>>>>> fcbb8623205624bcaadbe6051d12c6a1d454ef4d
 
 
 const ChatBot = function (){
 	this.message = null;
 	this.channel = null;
 	this.user = null;
+<<<<<<< HEAD
 
 	this.counter = [];
+=======
+>>>>>>> fcbb8623205624bcaadbe6051d12c6a1d454ef4d
 };
 
 
@@ -24,8 +30,11 @@ ChatBot.prototype.bindChatBot = function () {
 
 	PubSub.subscribe(pschannel.configureoptions, (msg, data) => {
 
+<<<<<<< HEAD
 		this.counterCreation();
 
+=======
+>>>>>>> fcbb8623205624bcaadbe6051d12c6a1d454ef4d
 		const options = new Options(data.username, data.password, data.channel);
 
 		client = new tmi.Client(options);
