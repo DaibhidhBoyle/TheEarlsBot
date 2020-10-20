@@ -31,7 +31,7 @@ Shoutout.prototype.bindShoutout = function () {
 
       this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`;
 
-      PubSub.publish(pschannel.modonlyresponse, this.response);
+      PubSub.publish(pschannel.response, this.response);
 
     } else {
       this.shoutoutList = [];

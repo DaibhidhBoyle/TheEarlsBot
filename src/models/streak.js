@@ -52,7 +52,7 @@ Streak.prototype.bindStreak = function () {
     console.log('streak: starting again. lets get this done lad!');
     db.set('streak.date', `${today}`)
     .write()
-    db.set('streak.count', 0)
+    db.set('streak.count', 1)
     .write()
   }
 
@@ -148,7 +148,7 @@ Streak.prototype.bindStreak = function () {
       return `Kenny's streamed for ${this.count} days in a row. Now that's just showing off`;
     }
     else {
-      return `There's been a small problem tracking this streak. Please message da101 here on twitch and he'll get that sorted asap. Sorry for the  inconvenience`
+      return `There's been a small problem tracking this streak. Please message dai101 here on twitch and he'll get that sorted asap. Sorry for the  inconvenience`
     }
 
   }

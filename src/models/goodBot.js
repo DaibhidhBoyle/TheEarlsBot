@@ -1,6 +1,5 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
-const storage = require('node-persist');
 const random = require('../helpers/random.js');
 const pschannel = require('../helpers/pubsubchannels');
 

@@ -10,6 +10,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "lowdb": "^1.0.0",
+    "pluralize": "^8.0.0",
     "prompt-async": "^0.9.9",
     "pubsub-js": "^1.8.0",
     "request": "^2.88.0",

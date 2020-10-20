@@ -1,7 +1,9 @@
 const PubSub = require('pubsub-js');
 const pschannel = require('../helpers/pubsubchannels');
 const prompt = require("prompt-async");
+var pluralize = require('pluralize')
 const random = require('../helpers/random.js');
+const strip = require('../helpers/strip.js');
 
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
@@ -11,80 +13,159 @@ const db = low(adapter)
 
 
 const Counter = function (){
+  this.message = null;
   this.response = null;
-  this.date = null;
 
-  this.random = null;
 };
 
-Cry.prototype.bindCry = function () {
+Counter.prototype.bindCounter = function () {
 
-  db.defaults({ cry: {date: undefined}})
+  db.defaults({ lastUsedCommand: '', counter: {}})
   .write()
 
-  PubSub.subscribe(pschannel.cry, async (msg, data) => {
-
-
-  });
-
-  PubSub.subscribe(pschannel.tear, async (msg, data) => {
+  PubSub.subscribe(pschannel.newcounter, async (msg, data) => {
 
     this.message = data
 
-    this.message = this.message.replace('!tears','').trim();
-    this.message = this.message.replace('!tear','').trim();
+    this.message = this.message.replace('!new','').trim();
 
-    if (this.message === ''){
-      let date = new Date();
-      date.setHours(0,0,0,0);
-      let formatted_date = await formatdate.format(date);
-      db.set('cry.date', `${formatted_date}`)
-      .write()
+    let counterTitle = await this.getTitleFromMessage(this.message);
+
+    if (counterTitle === undefined){
+      this.response = `Please mark your new counter title with a !. eg !deaths`
     }
     else {
-      db.set('cry.date', `${this.message}`)
-      .write()
+
+      isPlural = pluralize.isPlural(counterTitle);
+
+      if (isPlural === false){
+        counterTitle = pluralize(counterTitle);
+      }
+
+      let counterCommand = await this.getCommandFromTitle(counterTitle);
+
+      let number = strip.getNum(this.message);
+
+      if (counterTitle != undefined){
+        if(number === ''){
+          db.set(`counter.${counterTitle}`, {command: counterCommand, count: 0 })
+          .write()
+        }
+        else {
+          db.set(`counter.${counterTitle}`, {command: counterCommand, count: number })
+          .write()
+        }
+
+        this.setLastUsedCommand(counterCommand);
+
+        this.response = await this.setResponse(counterTitle);
+      }
     }
 
-    this.response = await this.getResponse()
+    PubSub.publish(pschannel.response, this.response);
+  });
+
+  PubSub.subscribe(pschannel.deletecounter, async (msg, data) => {
+
+    console.log('activated');
+
+    this.message = data
+
+    this.message = this.message.replace('!delete','').trim();
+
+    let counterTitle = await this.getTitleFromMessage(this.message);
+
+    isPlural = pluralize.isPlural(counterTitle);
+
+    if (isPlural === false){
+      counterTitle = pluralize(counterTitle);
+    }
+
+    let allCounters = db.get('counter')
+    .value()
+
+    let allCountersMinusTarget = {}
+
+    for (var property in allCounters) {
+      if (property !== counterTitle) {
+        allCountersMinusTarget[property] = allCounters[property]
+      }
+    }
+
+    db.set(`counter`, allCountersMinusTarget)
+    .write()
+
+    this.response = `The counter for ${counterTitle} has been removed from the record`
 
     PubSub.publish(pschannel.response, this.response);
   });
 };
 
+Counter.prototype.setResponse = async function (title) {
 
 
 
-Cry.prototype.getResponse = async function () {
+  count = await this.getCount(title);
 
-  this.random = random.getNum(3);
 
-  retrievedDate = db.get('cry.date')
-  .value()
+  if (count === '1'){
+    title = pluralize.singular(title);
+  }
 
-  if (retrievedDate === undefined){
-    return `The Earl is above such peasent things as crying. I don't think he has ever cried`
+  return `There has been ${count} ${title} so far!`
+
+}
+
+Counter.prototype.setLastUsedCommand = function (command) {
+
+  db.set('lastUsedCommand', `${command}`)
+  .write()
+
+}
+
+Counter.prototype.getTitleFromMessage = function (str) {
+
+  var exclamation = str.indexOf(`!`);
+  if(exclamation !== -1){
+    let flaggedWordCut = str.slice(exclamation);
+    var nextSpace = flaggedWordCut.indexOf(` `);
+    if (nextSpace === -1){
+      let word = flaggedWordCut.slice(1);
+      return word
+    } else {
+      let word = flaggedWordCut.slice(1, nextSpace);
+      return word
+    }
   }
   else {
-    let response =  await this.randomCry(this.random, retrievedDate)
-    return response
+    return undefined
   }
 
 }
 
+Counter.prototype.getCommandFromTitle = function (title) {
 
+  isSingular = pluralize.isSingular(title)
 
-Cry.prototype.randomCry = (random, date) => {
-
-  if(random === 0){
-    return `Kenny last cried on stream ${date}. and that's okay`
-  }
-  else if (random === 1){
-    return `Kenny last cried on stream on ${date}. It was all just too much`
-  }
-  else if (random === 2){
-    return `Kenny last shed some tears in front of us on ${date}. it's strong to show your emotions`
+  if (isSingular === false){
+    title = pluralize.singular(title)
   }
 
-};
-module.exports = Cry;
+  return `!` + title
+
+}
+
+Counter.prototype.getCount = function (counterTitle){
+  isPlural = pluralize.isPlural(counterTitle)
+
+  if (isPlural === false){
+    counterTitle = pluralize(counterTitle)
+  }
+
+  let count = db.get(`counter.${counterTitle}.count`)
+  .value()
+
+  return count
+}
+
+module.exports = Counter;

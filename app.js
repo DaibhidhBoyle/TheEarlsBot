@@ -13,6 +13,7 @@ const Shoutout = require('./src/models/shoutout.js');
 const Streak = require('./src/models/streak.js');
 const Soap = require('./src/models/soap.js');
 const GoodBot = require('./src/models/goodBot.js');
+const Counter = require('./src/models/counter.js');
 
 
 const binds = async () => {
@@ -52,6 +53,9 @@ const binds = async () => {
 
   const goodBot = new GoodBot
   goodBot.bindGoodBot();
+
+  const counter = new Counter
+  counter.bindCounter();
 
   const chatBot = new ChatBot();
   chatBot.bindChatBot();

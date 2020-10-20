@@ -11,6 +11,7 @@ const adapter = new FileSync('cryDb.json')
 const db = low(adapter)
 
 const Cry = function (){
+  this.message = null;
   this.response = null;
   this.date = null;
 

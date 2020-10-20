@@ -2,7 +2,6 @@ const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const Options = require('./options.js');
 const pschannel = require('../helpers/pubsubchannels');
-<<<<<<< HEAD
 const permissions = require('../helpers/checkPermissions.js');
 
 const low = require('lowdb')
@@ -10,19 +9,15 @@ const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync('counterDb.json')
 const db = low(adapter)
-=======
->>>>>>> fcbb8623205624bcaadbe6051d12c6a1d454ef4d
 
 
 const ChatBot = function (){
 	this.message = null;
 	this.channel = null;
 	this.user = null;
-<<<<<<< HEAD
 
 	this.counter = [];
-=======
->>>>>>> fcbb8623205624bcaadbe6051d12c6a1d454ef4d
+
 };
 
 
@@ -30,11 +25,8 @@ ChatBot.prototype.bindChatBot = function () {
 
 	PubSub.subscribe(pschannel.configureoptions, (msg, data) => {
 
-<<<<<<< HEAD
 		this.counterCreation();
 
-=======
->>>>>>> fcbb8623205624bcaadbe6051d12c6a1d454ef4d
 		const options = new Options(data.username, data.password, data.channel);
 
 		client = new tmi.Client(options);
@@ -90,7 +82,7 @@ ChatBot.prototype.bindChatBot = function () {
 			PubSub.publish(pschannel.beard, this.message);
 		}
 		//social
-		else if (this.message.includes(`!discord`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social') || this.message.includes(`!po`) ) {
+		else if (this.message.includes(`!discord`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social') || this.message.includes(`!po`) && this.message.indexOf('!poll') === -1 ) {
 			PubSub.publish(pschannel.social, this.message);
 		}
 		//rssocial
@@ -139,8 +131,15 @@ ChatBot.prototype.bindChatBot = function () {
 		else if (this.message === `good bot` || this.message === `bad bot` || this.message.includes(`@thesudsbot`)){
 			PubSub.publish(pschannel.bot, this.message);
 		}
-		//counters
-		else if (this.counter.includes(this.message))
+		// //counters
+		else if (this.message.includes(`!new`)){
+			let modStatus = await permissions.checkIfMod(this.user)
+			this.levelHandler(pschannel.newcounter, pschannel.modonly, modStatus, this.message)
+		}
+		else if (this.message.includes(`!delete`)){
+			let modStatus = await permissions.checkIfMod(this.user)
+			this.levelHandler(pschannel.deletecounter, pschannel.modonly, modStatus, this.message)
+		}
 	};
 
 	ChatBot.prototype.levelHandler = function (targetChannel1, targetChannel2, level, message) {
@@ -152,16 +151,9 @@ ChatBot.prototype.bindChatBot = function () {
 	}
 
 	ChatBot.prototype.counterCreation = function () {
-		db.defaults({ counters: {count: 0}})
-		.write()
-
 
 		counters =	db.get('counters')
 		.value()
-
-		for (const counter in counters) {
-			this.counter.push(`!` + counter)
-		}
 
 	}
 };

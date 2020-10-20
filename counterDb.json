@@ -1,6 +1,25 @@
 {
-  "counters": {
-    "count": 0,
-    "heat": 2
-  }
+  "counter": {
+    "deaths": {
+      "command": "!death",
+      "count": "5"
+    },
+    "crowns": {
+      "command": "!crown",
+      "count": "2"
+    },
+    "loves": {
+      "command": "!love",
+      "count": "555"
+    },
+    "hopes": {
+      "command": "!hope",
+      "count": "6"
+    },
+    "emus": {
+      "command": "!emu",
+      "count": "55"
+    }
+  },
+  "lastUsedCommand": "!emu"
 }
