@@ -16,7 +16,7 @@ const ChatBot = function (){
 	this.channel = null;
 	this.user = null;
 
-	this.counter = [];
+	this.counter = null;
 
 };
 
@@ -25,7 +25,7 @@ ChatBot.prototype.bindChatBot = function () {
 
 	PubSub.subscribe(pschannel.configureoptions, (msg, data) => {
 
-		this.counterCreation();
+		this.counter = this.counterCreation();
 
 		const options = new Options(data.username, data.password, data.channel);
 
@@ -140,9 +140,19 @@ ChatBot.prototype.bindChatBot = function () {
 			let modStatus = await permissions.checkIfMod(this.user)
 			this.levelHandler(pschannel.deletecounter, pschannel.modonly, modStatus, this.message)
 		}
+		else if (this.message.includes('!')){
+			for (let command in this.counter){
+				if (this.message.includes('!' + command) || this.message.includes(this.counter[command].command)){
+					let modStatus = await permissions.checkIfMod(this.user)
+					this.levelHandler(pschannel.countmod, pschannel.count, modStatus, this.message)
+				}
+			}
+		}
+
+
 	};
 
-	ChatBot.prototype.levelHandler = function (targetChannel1, targetChannel2, level, message) {
+	ChatBot.prototype.levelHandler = function (targetChannel1, targetChannel2, level, message, command) {
 		if (level === true){
 			PubSub.publish(targetChannel1, message);
 		} else {
@@ -152,7 +162,7 @@ ChatBot.prototype.bindChatBot = function () {
 
 	ChatBot.prototype.counterCreation = function () {
 
-		counters =	db.get('counters')
+		return	db.get('counter')
 		.value()
 
 	}

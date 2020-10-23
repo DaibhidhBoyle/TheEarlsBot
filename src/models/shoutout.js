@@ -21,8 +21,7 @@ const Shoutout = function (){
 
 
 Shoutout.prototype.bindShoutout = function () {
-  PubSub.subscribe(pschannel.shoutout, async (msg, data) => {
-
+  PubSub.subscribe(pschannel.shoutout, async (msg, data, data2) => {
 
     this.response = ' '
     this.message = data.trim();

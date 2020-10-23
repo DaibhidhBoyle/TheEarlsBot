@@ -19,7 +19,11 @@
     "emus": {
       "command": "!emu",
       "count": "55"
+    },
+    "stars": {
+      "command": "!star",
+      "count": "55"
     }
   },
-  "lastUsedCommand": "!emu"
+  "lastUsedCommand": "!star"
 }

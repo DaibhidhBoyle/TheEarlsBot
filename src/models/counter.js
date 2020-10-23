@@ -65,9 +65,13 @@ Counter.prototype.bindCounter = function () {
     PubSub.publish(pschannel.response, this.response);
   });
 
-  PubSub.subscribe(pschannel.deletecounter, async (msg, data) => {
 
-    console.log('activated');
+
+
+
+
+
+  PubSub.subscribe(pschannel.deletecounter, async (msg, data) => {
 
     this.message = data
 
@@ -99,14 +103,44 @@ Counter.prototype.bindCounter = function () {
 
     PubSub.publish(pschannel.response, this.response);
   });
+
+
+
+
+  PubSub.subscribe(pschannel.count, async (msg, data) => {
+
+    this.message = data
+
+    let title = this.getTitleFromMessage(data);
+    title = this.makePlural(title);
+    this.response = await this.setResponse(title);
+
+    PubSub.publish(pschannel.response, this.response);
+  });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Counter.prototype.setResponse = async function (title) {
 
 
 
   count = await this.getCount(title);
-
 
   if (count === '1'){
     title = pluralize.singular(title);
@@ -145,27 +179,43 @@ Counter.prototype.getTitleFromMessage = function (str) {
 
 Counter.prototype.getCommandFromTitle = function (title) {
 
-  isSingular = pluralize.isSingular(title)
-
-  if (isSingular === false){
-    title = pluralize.singular(title)
-  }
+  title = this.makeSingular(title);
 
   return `!` + title
 
 }
 
 Counter.prototype.getCount = function (counterTitle){
-  isPlural = pluralize.isPlural(counterTitle)
-
-  if (isPlural === false){
-    counterTitle = pluralize(counterTitle)
-  }
+  counterTitle = this.makePlural(counterTitle)
 
   let count = db.get(`counter.${counterTitle}.count`)
   .value()
 
   return count
+}
+
+Counter.prototype.makePlural = function (title){
+  isPlural = pluralize.isPlural(title)
+
+  if (isPlural === false){
+    title = pluralize(title)
+  }
+
+  return title
+
+
+}
+
+Counter.prototype.makeSingular = function (title){
+  isSingular = pluralize.isSingular(title)
+
+  if (isSingular === false){
+    title = pluralize.singular(title)
+  }
+
+  return title
+
+
 }
 
 module.exports = Counter;
