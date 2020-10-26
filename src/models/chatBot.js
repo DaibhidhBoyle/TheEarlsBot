@@ -132,11 +132,11 @@ ChatBot.prototype.bindChatBot = function () {
 			PubSub.publish(pschannel.bot, this.message);
 		}
 		// //counters
-		else if (this.message.includes(`!new`)){
+		else if (this.message.includes(`!newcount`)){
 			let modStatus = await permissions.checkIfMod(this.user)
 			this.levelHandler(pschannel.newcounter, pschannel.modonly, modStatus, this.message)
 		}
-		else if (this.message.includes(`!delete`)){
+		else if (this.message.includes(`!deletecount`) || this.message.includes(`!delcount`)){
 			let modStatus = await permissions.checkIfMod(this.user)
 			this.levelHandler(pschannel.deletecounter, pschannel.modonly, modStatus, this.message)
 		}

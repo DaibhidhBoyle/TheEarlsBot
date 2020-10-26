@@ -1,12 +1,8 @@
 {
   "counter": {
-    "deaths": {
-      "command": "!death",
-      "count": "5"
-    },
     "crowns": {
       "command": "!crown",
-      "count": "2"
+      "count": "10"
     },
     "loves": {
       "command": "!love",
@@ -16,14 +12,10 @@
       "command": "!hope",
       "count": "6"
     },
-    "emus": {
-      "command": "!emu",
-      "count": "55"
-    },
     "stars": {
       "command": "!star",
       "count": "55"
     }
   },
-  "lastUsedCommand": "!star"
+  "lastUsedCommand": "!crown"
 }
