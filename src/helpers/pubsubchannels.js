@@ -16,11 +16,14 @@ const NEWCOUNTER = 'ChatBot: chat message to create a new counter in counter dat
 const DELETECOUNTER = 'ChatBot: chat message to delete a  counter in counter database';
 const COUNT = 'ChatBot: chat message to retrieve the count on a specfied command from database';
 const COUNTMOD = 'ChatBot: chat message to affect count database as a mod';
+const QUICKADD = 'Chatbot: add one to the latest counter used';
+const QUICKSUBTRACT = 'Chatbot: takes one away from the latest counter used';
+const MODONLY = 'ChatBot: ready a mod only response to Twitch';
 const BOTMAINTAINANCE = 'ChatBot: chat command to respond when bot is addressed by user';
 const RESPONSE = '*: ready response to Twitch';
 const RESPONSENOTAT = '*: ready response to Twitch with no @ symbol';
 const RIOTRESPONSE = 'Riot: readies response to twitch and changes color to red';
-const MODONLY = 'checkPermissions: ready a mod only response to Twitch';
+
 
 exports.configureoptions = CONFIGUREOPTIONS;
 exports.beard = BEARD;
@@ -40,6 +43,8 @@ exports.newcounter = NEWCOUNTER;
 exports.deletecounter = DELETECOUNTER;
 exports.count = COUNT;
 exports.countmod = COUNTMOD;
+exports.quickadd = QUICKADD;
+exports.quicksubtract = QUICKSUBTRACT;
 exports.bot = BOTMAINTAINANCE;
 exports.response = RESPONSE;
 exports.responseNoAt = RESPONSENOTAT

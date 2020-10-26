@@ -12,10 +12,18 @@
       "command": "!hope",
       "count": "6"
     },
-    "stars": {
-      "command": "!star",
-      "count": "55"
+    "deaths": {
+      "command": "!death",
+      "count": "6"
+    },
+    "dais": {
+      "command": "!dai",
+      "count": "2"
+    },
+    "reads": {
+      "command": "!read",
+      "count": "1"
     }
   },
-  "lastUsedCommand": "!crown"
+  "lastUsedCommand": "deaths"
 }

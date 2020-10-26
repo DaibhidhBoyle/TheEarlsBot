@@ -1,7 +1,7 @@
 const PubSub = require('pubsub-js');
 const pschannel = require('../helpers/pubsubchannels');
 const prompt = require("prompt-async");
-var pluralize = require('pluralize')
+const pluralize = require('pluralize')
 const random = require('../helpers/random.js');
 const strip = require('../helpers/strip.js');
 
@@ -32,7 +32,7 @@ Counter.prototype.bindCounter = function () {
     let counterTitle = await this.getTitleFromMessage(this.message);
 
     if (counterTitle === undefined){
-      this.response = `Please mark your new counter title with a !. eg !deaths`
+      this.response = `Please mark your new counter title with a !. eg !new !deaths`
     }
     else {
 
@@ -48,7 +48,7 @@ Counter.prototype.bindCounter = function () {
 
       if (counterTitle != undefined){
         if(number === ''){
-          db.set(`counter.${counterTitle}`, {command: counterCommand, count: 0 })
+          db.set(`counter.${counterTitle}`, {command: counterCommand, count: '0' })
           .write()
         }
         else {
@@ -56,7 +56,7 @@ Counter.prototype.bindCounter = function () {
           .write()
         }
 
-        this.setLastUsedCommand(counterCommand);
+        this.setLastUsedCommand(counterTitle);
 
         this.response = await this.setResponse(counterTitle);
       }
@@ -124,9 +124,8 @@ Counter.prototype.bindCounter = function () {
 
       let title = this.getTitleFromMessage(data);
       title = this.makePlural(title);
-      let releventCommand = db.get(`counter.${title}.command`)
-      .value()
-      this.setLastUsedCommand(releventCommand)
+
+      this.setLastUsedCommand(title)
 
       this.response = await this.setResponse(title);
 
@@ -136,8 +135,11 @@ Counter.prototype.bindCounter = function () {
 
 
 
+
+
+
+
     PubSub.subscribe(pschannel.countmod, async (msg, data) => {
-      console.log('HELLO');
 
       this.message = data
 
@@ -179,12 +181,71 @@ Counter.prototype.bindCounter = function () {
         .write()
       }
 
-      this.setLastUsedCommand(releventCommand)
+      this.setLastUsedCommand(title);
 
       this.response = await this.setResponse(title);
 
       PubSub.publish(pschannel.response, this.response);
     });
+
+
+
+    PubSub.subscribe(pschannel.quickadd, async (msg, data) => {
+
+      this.message = data
+
+      numbers = strip.getNum(this.message)
+
+      let lastCommand = db.get(`lastUsedCommand`)
+      .value();
+
+      if (lastCommand === ''){
+        this.response = 'Sorry, I dont know what you want me to add to :('
+      }
+      else {
+        if( numbers !== ''){
+
+          db.update(`counter.${lastCommand}.count`, n => `${Number(n) + Number(numbers)}`)
+          .write()
+        } else {
+          db.update(`counter.${lastCommand}.count`, n => `${Number(n) + 1}`)
+          .write()
+        }
+
+        this.response = await this.setResponse(lastCommand);
+      }
+      PubSub.publish(pschannel.response, this.response);
+    });
+
+
+
+    PubSub.subscribe(pschannel.quicksubtract, async (msg, data) => {
+
+      this.message = data
+
+      numbers = strip.getNum(this.message)
+
+      let lastCommand = db.get(`lastUsedCommand`)
+      .value();
+
+      if (lastCommand === ''){
+        this.response = 'Sorry, I dont know what you want me to subtract from :('
+      }
+      else {
+        if( numbers !== ''){
+
+          db.update(`counter.${lastCommand}.count`, n => `${Number(n) - Number(numbers)}`)
+          .write()
+        } else {
+          db.update(`counter.${lastCommand}.count`, n => `${Number(n) - 1}`)
+          .write()
+        }
+
+        this.response = await this.setResponse(lastCommand);
+      }
+      PubSub.publish(pschannel.response, this.response);
+    });
+
   };
 
 
