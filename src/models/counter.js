@@ -161,7 +161,8 @@ Counter.prototype.bindCounter = function () {
           db.update(`counter.${title}.count`, n => `${Number(n) + 1}`)
           .write()
         }
-      } else if (this.message.includes(`subtract`) || this.message.includes(`-`)){
+      }
+      else if (this.message.includes(`subtract`) || this.message.includes(`-`)){
         if( numbers !== ''){
 
           db.update(`counter.${title}.count`, n => `${Number(n) - Number(numbers)}`)
@@ -170,7 +171,8 @@ Counter.prototype.bindCounter = function () {
           db.update(`counter.${title}.count`, n => `${Number(n) - 1}`)
           .write()
         }
-      }else if (numbers !== ''){
+      }
+      else if (numbers !== ''){
         db.set(`counter.${title}`, {command: releventCommand, count: numbers })
         .write()
       }
