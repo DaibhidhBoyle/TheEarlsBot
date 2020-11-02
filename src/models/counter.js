@@ -31,17 +31,27 @@ Counter.prototype.bindCounter = function () {
 
     let counterTitle = await this.getTitleFromMessage(this.message);
 
+    isPlural = pluralize.isPlural(counterTitle);
+
+    if (isPlural === false){
+      counterTitle = pluralize(counterTitle);
+    }
+
+    let allKeys = this.getKeys()
+
+    console.log(allKeys);
+    console.log(counterTitle);
+
     if (counterTitle === undefined){
       this.response = `Please mark your new counter title with a !. eg !new !deaths`
     }
+    else if ( allKeys.includes(counterTitle) ){
+      let response = await this.setResponse(counterTitle)
+      this.setLastUsedCommand(counterTitle);
+      this.response = 'Sorry that counter already exists. :( ' + ' ' + response
+
+    }
     else {
-
-      isPlural = pluralize.isPlural(counterTitle);
-
-      if (isPlural === false){
-        counterTitle = pluralize(counterTitle);
-      }
-
       let counterCommand = await this.getCommandFromTitle(counterTitle);
 
       let number = strip.getNum(this.message);
@@ -248,6 +258,23 @@ Counter.prototype.bindCounter = function () {
       PubSub.publish(pschannel.response, this.response);
     });
 
+
+    PubSub.subscribe(pschannel.allcounters, async (msg, data) => {
+
+      this.message = data
+
+      let allKeys = this.getKeys()
+
+      let allKeysbutLast = allKeys.slice(0, -1).join(', ')
+
+      let lastKey = allKeys.pop()
+
+      this.response = `All the counters we're are followering are:` + ` ` + allKeysbutLast + ' ' + 'and' + ' ' + lastKey
+
+      PubSub.publish(pschannel.response, this.response);
+    });
+
+
   };
 
 
@@ -323,6 +350,13 @@ Counter.prototype.bindCounter = function () {
     .value()
 
     return count
+  }
+
+  Counter.prototype.getKeys = function(){
+    let allCounters = db.get(`counter`)
+    .value()
+
+    return Object.keys(allCounters)
   }
 
   Counter.prototype.makePlural = function (title){

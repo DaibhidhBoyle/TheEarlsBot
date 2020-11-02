@@ -14,16 +14,24 @@
     },
     "deaths": {
       "command": "!death",
-      "count": "6"
+      "count": "0"
     },
     "dais": {
       "command": "!dai",
-      "count": "2"
+      "count": "1"
     },
     "reads": {
       "command": "!read",
+      "count": "0"
+    },
+    "happies": {
+      "command": "!happy",
       "count": "1"
+    },
+    "depressions": {
+      "command": "!depression",
+      "count": "44"
     }
   },
-  "lastUsedCommand": "deaths"
+  "lastUsedCommand": "depressions"
 }

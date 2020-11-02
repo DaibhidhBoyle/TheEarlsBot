@@ -127,6 +127,11 @@ ChatBot.prototype.bindChatBot = function () {
 			let streamerStatus = await permissions.checkIfStreamer(this.user)
 			this.levelHandler(pschannel.streakset, pschannel.streak, streamerStatus, this.message)
 		}
+		//lurk
+		else if (this.message.includes(`!lurk`)){
+			let modStatus = await permissions.checkIfMod(this.user)
+			this.levelHandler(pschannel.lurk, pschannel.modonly, modStatus, this.message)
+		}
 		//goodBot
 		else if (this.message === `good bot` || this.message === `bad bot` || this.message.includes(`@thesudsbot`)){
 			PubSub.publish(pschannel.bot, this.message);
@@ -148,6 +153,10 @@ ChatBot.prototype.bindChatBot = function () {
 			let modStatus = await permissions.checkIfMod(this.user)
 			this.levelHandler(pschannel.quicksubtract, pschannel.modonly, modStatus, this.message)
 		}
+		else if (this.message.includes('!allcount')){
+			let modStatus = await permissions.checkIfMod(this.user)
+			this.levelHandler(pschannel.allcounters, pschannel.modonly, modStatus, this.message)
+		}
 		else if (this.message.includes('!')){
 			for (let command in this.counter){
 				if (this.message.includes('!' + command) || this.message.includes(this.counter[command].command)){
@@ -160,7 +169,7 @@ ChatBot.prototype.bindChatBot = function () {
 
 	};
 
-	ChatBot.prototype.levelHandler = function (targetChannel1, targetChannel2, level, message, command) {
+	ChatBot.prototype.levelHandler = function (targetChannel1, targetChannel2, level, message) {
 		if (level === true){
 			PubSub.publish(targetChannel1, message);
 		} else {
