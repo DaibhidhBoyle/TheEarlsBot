@@ -1,11 +1,19 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
+var TinyURL = require('tinyurl');
 const random = require('../helpers/random.js');
 const capitalise = require('../helpers/capitalise.js');
 const pschannel = require('../helpers/pubsubchannels');
 
+require('dotenv').config();
 
-var TinyURL = require('tinyurl');
+const Twitch = require("twitch.tv-api");
+const twitch = new Twitch({
+    id: process.env.CLIENT_ID,
+    secret: process.env.CLIENT_SECRET
+});
+
+
 
 
 const Shoutout = function (){
@@ -23,6 +31,7 @@ const Shoutout = function (){
 
 
 Shoutout.prototype.bindShoutout = function () {
+
   PubSub.subscribe(pschannel.shoutout, async (msg, data, data2) => {
 
     this.response = ' '
@@ -45,16 +54,30 @@ Shoutout.prototype.bindShoutout = function () {
 
       let arrayLength = this.shoutoutList.length;
 
-      if (arrayLength > 0){
-        this.response = `Don't let your fun on twitch end with The Earl! There are other great channels; `
+      if (arrayLength > 1){
+        this.response = `Don't let your fun on twitch end with The Earl!`
         while (this.counter < arrayLength){
+          let channelName = this.shoutoutList[this.counter]
+          let capitalName = await capitalise.capital(channelName)
           if (this.counter > 0 ) {
             this.response = this.response + ' ' + 'Or'
           }
           this.random = random.getNum(10);
-          this.additionalText =  await this.channelMessage(this.random)
+          this.additionalText =  await this.channelMessage(this.random, channelName, capitalName)
           this.response = this.response + ` ` + this.additionalText
           this.counter ++
+        }
+      }
+      else if (arrayLength === 1){
+        let channelName = this.shoutoutList[0]
+        let capitalName = await capitalise.capital(channelName)
+        this.response = `Don't let your fun on twitch end with The Earl!`
+        this.random = random.getNum(10);
+        this.additionalText =  await this.channelMessage(this.random, channelName, capitalName)
+        this.response = this.response + ` ` + this.additionalText
+        let gameLastPlayed = await this.GetLastGame(channelName);
+        if (gameLastPlayed !== ''){
+          this.response = this.response + ' ' + 'They were last streaming' + ' ' + gameLastPlayed
         }
       }
       else {
@@ -97,42 +120,46 @@ Shoutout.prototype.bindShoutout = function () {
 
   };
 
-  Shoutout.prototype.channelMessage = async function (random) {
-    let capitalName = await capitalise.capital(this.shoutoutList[this.counter])
-    let channelName = this.shoutoutList[this.counter]
+  Shoutout.prototype.channelMessage = async function (random, capitalName, channelName) {
     switch (random) {
       case 0:
-      return `checkout ${capitalName} at www.twitch.tv/${channelName}`;
+      return `Checkout ${capitalName} at www.twitch.tv/${channelName}`;
       break;
       case 1:
-      return `jump in on the fun with ${capitalName} by clicking www.twitch.tv/${channelName}`;
+      return `Jump in on the fun with ${capitalName} by clicking www.twitch.tv/${channelName}`;
       break;
       case 2:
-      return `watch ${capitalName} over at www.twitch.tv/${channelName}`;
+      return `Watch ${capitalName} over at www.twitch.tv/${channelName}`;
       break;
       case 3:
-      return `catch ${capitalName}'s stream on www.twitch.tv/${channelName}`;
+      return `Catch ${capitalName}'s stream on www.twitch.tv/${channelName}`;
       break;
       case 4:
-      return `join ${capitalName} at their channel www.twitch.tv/${channelName}`;
+      return `Join ${capitalName} at their channel www.twitch.tv/${channelName}`;
       break;
       case 5:
-      return `take a look at ${capitalName} over on www.twitch.tv/${channelName}`;
+      return `Take a look at ${capitalName} over on www.twitch.tv/${channelName}`;
       break;
       case 6:
-      return `try ${capitalName} out over at www.twitch.tv/${channelName}`;
+      return `Try ${capitalName} out over at www.twitch.tv/${channelName}`;
       break;
       case 7:
-      return `party with ${capitalName} over on www.twitch.tv/${channelName}`;
+      return `Party with ${capitalName} over on www.twitch.tv/${channelName}`;
       break;
       case 8:
-      return`spend some quality time with ${capitalName} here - www.twitch.tv/${channelName}`;
+      return`Spend some quality time with ${capitalName} here - www.twitch.tv/${channelName}`;
       break;
       case 9:
-      return `give ${capitalName} some love at www.twitch.tv/${channelName}`;
+      return `Give ${capitalName} some love at www.twitch.tv/${channelName}`;
       break;
     }
   }
+
+  Shoutout.prototype.GetLastGame = async function (channel) {
+    let data = await twitch.searchChannels(channel)
+    return data['channels'][0]['game']
+  };
+
 };
 
 

@@ -8,14 +8,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.0",
     "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
     "lowdb": "^1.0.0",
     "pluralize": "^8.0.0",
     "prompt-async": "^0.9.9",
     "pubsub-js": "^1.8.0",
-    "request": "^2.88.0",
+    "request": "^2.88.2",
     "tinyurl": "^1.1.5",
-    "tmi.js": "^1.5.0"
+    "tmi.js": "^1.5.0",
+    "twitch.tv-api": "^1.2.4"
   },
   "repository": {
     "type": "git",
