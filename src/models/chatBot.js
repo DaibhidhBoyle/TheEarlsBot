@@ -140,6 +140,14 @@ ChatBot.prototype.bindChatBot = function () {
 			let modStatus = await permissions.checkIfMod(this.user)
 			this.levelHandler(pschannel.deletecounter, pschannel.modonly, modStatus, this.message)
 		}
+		else if (this.message.includes(`!add`) || this.message.includes(`!+`)){
+			let modStatus = await permissions.checkIfMod(this.user)
+			this.levelHandler(pschannel.quickadd, pschannel.modonly, modStatus, this.message)
+		}
+		else if (this.message.includes(`!subtract`) || this.message.includes(`!-`)){
+			let modStatus = await permissions.checkIfMod(this.user)
+			this.levelHandler(pschannel.quicksubtract, pschannel.modonly, modStatus, this.message)
+		}
 		else if (this.message.includes('!')){
 			for (let command in this.counter){
 				if (this.message.includes('!' + command) || this.message.includes(this.counter[command].command)){
