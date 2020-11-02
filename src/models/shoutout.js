@@ -1,7 +1,9 @@
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
 const random = require('../helpers/random.js');
+const capitalise = require('../helpers/capitalise.js');
 const pschannel = require('../helpers/pubsubchannels');
+
 
 var TinyURL = require('tinyurl');
 
@@ -96,7 +98,7 @@ Shoutout.prototype.bindShoutout = function () {
   };
 
   Shoutout.prototype.channelMessage = async function (random) {
-    let capitalName = await this.capitalise(this.shoutoutList[this.counter])
+    let capitalName = await capitalise.capital(this.shoutoutList[this.counter])
     let channelName = this.shoutoutList[this.counter]
     switch (random) {
       case 0:
@@ -130,10 +132,6 @@ Shoutout.prototype.bindShoutout = function () {
       return `give ${capitalName} some love at www.twitch.tv/${channelName}`;
       break;
     }
-  }
-
-  Shoutout.prototype.capitalise = function (name) {
-    return name.charAt(0).toUpperCase() + name.slice(1);
   }
 };
 

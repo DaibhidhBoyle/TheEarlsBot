@@ -12,6 +12,7 @@ const RsSocial = require('./src/models/rssocial.js');
 const Shoutout = require('./src/models/shoutout.js');
 const Streak = require('./src/models/streak.js');
 const Soap = require('./src/models/soap.js');
+const Lurk = require('./src/models/lurk.js');
 const GoodBot = require('./src/models/goodBot.js');
 const Counter = require('./src/models/counter.js');
 
@@ -50,6 +51,9 @@ const binds = async () => {
 
   const streak = new Streak();
   streak.bindStreak();
+
+  const lurk = new Lurk();
+  lurk.bindLurk();
 
   const goodBot = new GoodBot
   goodBot.bindGoodBot();

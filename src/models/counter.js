@@ -1,6 +1,5 @@
 const PubSub = require('pubsub-js');
 const pschannel = require('../helpers/pubsubchannels');
-const prompt = require("prompt-async");
 const pluralize = require('pluralize')
 const random = require('../helpers/random.js');
 const strip = require('../helpers/strip.js');
@@ -38,9 +37,6 @@ Counter.prototype.bindCounter = function () {
     }
 
     let allKeys = this.getKeys()
-
-    console.log(allKeys);
-    console.log(counterTitle);
 
     if (counterTitle === undefined){
       this.response = `Please mark your new counter title with a !. eg !new !deaths`

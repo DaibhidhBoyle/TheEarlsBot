@@ -130,7 +130,7 @@ ChatBot.prototype.bindChatBot = function () {
 		//lurk
 		else if (this.message.includes(`!lurk`)){
 			let modStatus = await permissions.checkIfMod(this.user)
-			this.levelHandler(pschannel.lurk, pschannel.modonly, modStatus, this.message)
+			this.levelHandler(pschannel.lurk, pschannel.modonly, modStatus, this.user[`display-name`])
 		}
 		//goodBot
 		else if (this.message === `good bot` || this.message === `bad bot` || this.message.includes(`@thesudsbot`)){
