@@ -26,6 +26,9 @@ Basic.prototype.bindBasic = function () {
     else if(this.message.includes('!movie') || data.includes('!mn')){
       this.response = `Subs! Join us on Discord ( discordapp.com/invite/PmK33d4 ) for a Movie Night every Sunday at 6pm CT. Remember to connect your Discord to your Twitch using the Connections tab so you can be part of the fun!`
     }
+    else if(this.message.includes('!donate')){
+      this.response = `Donations are not needed but are very apprciated. Donate at https://streamelements.com/theearlofsuds/tip`
+    }
 
     PubSub.publish(pschannel.responseNoAt, this.response);
 
