@@ -147,12 +147,9 @@ Counter.prototype.bindCounter = function () {
 
     PubSub.subscribe(pschannel.countmod, async (msg, data) => {
 
-      this.message = data
+      this.message = data.message
 
-
-      let title = this.getTitleFromMessage(data);
-      title = this.makePlural(title);
-
+      let title = data.command
 
       let releventCommand = db.get(`counter.${title}.command`)
       .value()

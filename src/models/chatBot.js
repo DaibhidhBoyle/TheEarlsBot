@@ -127,6 +127,11 @@ ChatBot.prototype.bindChatBot = function () {
 			let streamerStatus = await permissions.checkIfStreamer(this.user)
 			this.levelHandler(pschannel.streakset, pschannel.streak, streamerStatus, this.message)
 		}
+		//speed
+		else if(this.message.includes('!speed')){
+			let dataToSend = {message: this.message, channel: this.channel};
+			PubSub.publish(pschannel.speed, dataToSend);
+		}
 		//lurk
 		else if (this.message.includes(`!lurk`)){
 			let modStatus = await permissions.checkIfMod(this.user)
@@ -160,8 +165,9 @@ ChatBot.prototype.bindChatBot = function () {
 		else if (this.message.includes('!')){
 			for (let command in this.counter){
 				if (this.message.includes('!' + command) || this.message.includes(this.counter[command].command)){
+					let dataToSend = {message: this.message, command: command}
 					let modStatus = await permissions.checkIfMod(this.user)
-					this.levelHandler(pschannel.countmod, pschannel.count, modStatus, this.message)
+					this.levelHandler(pschannel.countmod, pschannel.count, modStatus, dataToSend)
 				}
 			}
 		}

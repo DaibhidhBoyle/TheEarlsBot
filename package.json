@@ -9,9 +9,12 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.0",
+    "axois": "0.0.1-security",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
+    "iso8601-duration": "^1.2.0",
     "lowdb": "^1.0.0",
+    "node-speedrun": "^1.2.0",
     "pluralize": "^8.0.0",
     "prompt-async": "^0.9.9",
     "pubsub-js": "^1.8.0",
