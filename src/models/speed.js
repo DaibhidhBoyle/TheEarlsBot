@@ -1,35 +1,6 @@
-// const axios = require('axios');
-// // Cannot use import statement outside a module
-//
-// axios.get('https://www.speedrun.com/api/v1/games/transistor')
-//   .then ((response) => {
-//     arrayoflinks = response.data.data.links
-//     // console.log(response.data.data.runs[0].run.players[0].uri);
-//   });
-//
-//   axios.get('https://www.speedrun.com/api/v1/games/v1ppjz18/categories')
-//     .then((response) => {
-//       console.log(response.data);
-//     });
-//
-//
-//
-// axios.get('https://www.speedrun.com/api/v1/leaderboards/v1ppjz18/category/zdnz1ndq')
-//   .then((response) => {
-//     // time = response.data.data.runs[0].run.times.primary
-//     // link_player_info = response.data.data.runs[0].run.players[0].uri;
-//     // console.log(time);
-//   });
-//
-// axios.get('https://www.speedrun.com/api/v1/users/qj2p378k')
-//     .then((response) => {
-//       name = response.data.data.names.international
-//       // console.log(name);
-//     });
-
-
-
-
+// add catches (try)
+// change to filter
+//form respoonse
 
 const tmi = require('tmi.js');
 const PubSub = require('pubsub-js');
@@ -61,13 +32,14 @@ Speed.prototype.bindSpeed = function () {
     this.message = this.message.replace('!speedrun', '').trim();
     this.message = this.message.replace('!speed', '').trim();
 
-    let catLink = await this.getCategoryLink();
+    this.game = await this.setGame()
+    let catLink = await this.getCategoryLink(this.game);
     let listOfRuns = await this.getRunLinks(catLink);
     let listOfLeaders = await this.getLeaderboard(listOfRuns);
-    let leadPlayerLinks = await this.getLeadPlayerLinks(listOfLeaders);
-    let leadPlayers = await this.getLeadPlayers(leadPlayerLinks);
-
-
+    let leaderInfo = await this.getLeadPlayerLinks(listOfLeaders);
+    let runTimes = leaderInfo.map(x => x['time'])
+    let leadPlayers = await this.getLeadPlayers(leaderInfo);
+    this.response = await this.formResponse(this.game, listOfRuns, leadPlayers, runTimes);
 
 
     PubSub.publish(pschannel.response, this.response);
@@ -75,12 +47,16 @@ Speed.prototype.bindSpeed = function () {
   });
 };
 
-Speed.prototype.getCategoryLink = async () => {
-  let livedata = await twitch.searchChannels('GronkhTV')
+Speed.prototype.setGame = async function (){
+  let livedata = await twitch.searchChannels('TheHaboo')
   // data.channel)
-  this.game = livedata['channels'][0]['game']
+  return livedata['channels'][0]['game']
+}
 
-  let formattedGame = this.game.split(" ").join("%20")
+Speed.prototype.getCategoryLink = async (game) => {
+
+
+  let formattedGame = game.split(" ").join("%20")
   formattedGame = formattedGame.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   let gamedata = await axios.get(`https://www.speedrun.com/api/v1/games?name=${formattedGame}`)
     //   .catch((error) => {
@@ -158,16 +134,52 @@ Speed.prototype.getCategoryLink = async () => {
         return el.place === 1
       })[0]
       let playerLinks = boardRunInfo['run']['players'].map(x => x['uri'])
-      // listOfPlayerLinks.push(playerLinks);
       let time = boardRunInfo['run']['times']['primary'];
-      console.log(timecalc.parse(time));
+      let formattedTime = await this.parseTime((timecalc.parse(time)))
+      listOfPlayerLinks.push({playerLinks: playerLinks, time: formattedTime});
     }
     return listOfPlayerLinks;
   }
 
-  Speed.prototype.getLeadPlayers = async function (playerLinks){
-    // console.log(playerLinks);
-    // console.log(playerLinks.flat())
+  Speed.prototype.getLeadPlayers = async function (leaderInfo){
+    let names = [ ]
+    let playerLinks = leaderInfo.map(x => x['playerLinks'])
+    for (playerLink of playerLinks){
+      if (playerLink.length === 1){
+        nameData = await axios.get(playerLink[0]);
+        names.push(nameData['data']['data']['names']['international']);
+      } else {
+        currentNames = []
+        for (player of playerLink){
+          nameData = await axios.get(player);
+          name = nameData['data']['data']['names']['international'];
+          currentNames.push(name)
+        }
+        names.push(currentNames);
+      }
+    }
+    return names
+  }
+
+  Speed.prototype.formResponse = async function (gameTitle, runs, playerNames, times){
+    // For super cool warriors X; daibhidh holds the fast time in glitchless with 3h4m5s, ross and tom in all% with 5m4s and Jess in killyourson% with 2s
+    console.log(gameTitle);
+    console.log(runs);
+    console.log(playerNames);
+    console.log(times);
+    response = `For ${gameTitle}`
+    
+    return response
+  }
+
+  Speed.prototype.parseTime = async function (time){
+    let formattedTime = ''
+    if (time.weeks > 0) {formattedTime = formattedTime + ' ' + `${Math.floor(time.weeks)} w`}
+    if (time.days > 0) {formattedTime = formattedTime + ' ' +  `${Math.floor(time.days)} d`}
+    if (time.hours > 0) {formattedTime = formattedTime + ' ' + `${Math.floor(time.hours)} h`}
+    if (time.minutes > 0) {formattedTime = formattedTime + ' ' + `${Math.floor(time.minutes)} m`}
+    if (time.seconds > 0) {formattedTime = formattedTime +  ' ' + `${Math.floor(time.seconds)} s`}
+    return formattedTime
   }
 
 
