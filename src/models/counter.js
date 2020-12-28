@@ -272,21 +272,6 @@ Counter.prototype.bindCounter = function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   Counter.prototype.setResponse = async function (title) {
 
 

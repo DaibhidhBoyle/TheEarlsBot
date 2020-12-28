@@ -90,7 +90,7 @@ ChatBot.prototype.bindChatBot = function () {
 			PubSub.publish(pschannel.rssocial, this.message);
 		}
 		// basic
-		else if (this.message.includes(`!welcome`)  || this.message.includes('!royalitysoap') || this.message.includes('!rs') || this.message.includes('!schedule') || this.message.includes('!when') || this.message.includes('!movie') || this.message.includes('!mn') || this.message.includes('!donate')) {
+		else if (this.message.includes(`!welcome`)  || this.message.includes('!royaltysoaps') || this.message.includes('!rs') || this.message.includes('!schedule') || this.message.includes('!when') || this.message.includes('!movie') || this.message.includes('!mn') || this.message.includes('!donate') || this.message.includes('!command') || this.message.includes('!modcommand')) {
 			PubSub.publish(pschannel.basic, this.message);
 		}
 		// friends
