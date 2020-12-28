@@ -82,7 +82,7 @@ ChatBot.prototype.bindChatBot = function () {
 			PubSub.publish(pschannel.beard, this.message);
 		}
 		//social
-		else if (this.message.includes(`!discord`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social') || this.message.includes(`!po`) && this.message.indexOf('!poll') === -1 ) {
+		else if (this.message.includes(`!discord`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social') || this.message === `!po` ){
 			PubSub.publish(pschannel.social, this.message);
 		}
 		//rssocial
@@ -118,7 +118,7 @@ ChatBot.prototype.bindChatBot = function () {
 			PubSub.publish(pschannel.soap, this.message);
 		}
 		//shoutout
-		else if (this.message.includes(`!shoutout`) ||this.message.includes(`!so`)){
+		else if (this.message.includes(`!shoutout`) ||this.message.includes(`!so`)&& !this.message.includes('!song') && !this.message.includes('!soap')){
 			let modStatus = await permissions.checkIfMod(this.user)
 			this.levelHandler(pschannel.shoutout, pschannel.modonly, modStatus, this.message)
 		}

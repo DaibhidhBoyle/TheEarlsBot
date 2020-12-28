@@ -50,7 +50,7 @@ Social.prototype.bindSocial = function () {
 Social.prototype.randomDiscord = function (random) {
 
   if(random === 0){
-    return `Can't get enough of the Earl and the chat? Join us on discord at discordapp.com/invite/PmK33d4 There's a bunch of pet pics `;
+    return `Can't get enough of the Earl and the chat? Join us on discord at discordapp.com/invite/PmK33d4 The vibes are quality!`;
   }
   else if (random === 1){
     return `Need more positivity in your life? Join the community on discord at discordapp.com/invite/PmK33d4`;
@@ -62,7 +62,7 @@ Social.prototype.randomDiscord = function (random) {
 
 Social.prototype.randomInsta = function (random) {
   if(random === 0){
-    return `Wanna more of Kenny's face? Get it at bit.ly/theearlofsuds`
+    return `Want more of Kenny's face? Get it at bit.ly/theearlofsuds`
   }
   else if(random === 1){
     return `Forget streamer! Kenny's born to be a model at  bit.ly/theearlofsuds`
@@ -101,13 +101,13 @@ Social.prototype.randomPo = function (random) {
 
 Social.prototype.randomSocial = function (random) {
   if(random === 0){
-    return `Only seeing Kenny on Twitch not enough? Get more at Instagram - bit.ly/theearlofsuds and Youtube - www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA Or join the fun over at the community discord - https://discordapp.com/invite/PmK33d4`;
+    return `Only seeing Kenny on Twitch not enough? Get more at Instagram - bit.ly/theearlofsuds and Youtube - www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA Or join the fun over at the community Discord - https://discordapp.com/invite/PmK33d4`;
   }
   else if(random === 1){
     return `Weeby, Nerdy and occasionally Beardy! Oh My! Get more at Instagram -  bit.ly/theearlofsuds , Youtube - www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA and Discord - https://discordapp.com/invite/PmK33d4`;
   }
   else if(random === 2){
-    return `Get your Kenny fix at Instagram -  bit.ly/theearlofsuds , Youtube - www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA Or join the fun over at the community discord - https://discordapp.com/invite/PmK33d4`;
+    return `Get your Kenny fix at Instagram -  bit.ly/theearlofsuds , Youtube - www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA Or join the fun over at the community Discord - https://discordapp.com/invite/PmK33d4`;
   }
 
 };

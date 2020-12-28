@@ -63,7 +63,7 @@ Shoutout.prototype.bindShoutout = function () {
             this.response = this.response + ' ' + 'Or'
           }
           this.random = random.getNum(10);
-          this.additionalText =  await this.channelMessage(this.random, channelName, capitalName)
+          this.additionalText =  await this.channelMessage(this.random, capitalName, channelName)
           this.response = this.response + ` ` + this.additionalText
           this.counter ++
         }
@@ -73,11 +73,13 @@ Shoutout.prototype.bindShoutout = function () {
         let capitalName = await capitalise.capital(channelName)
         this.response = `Don't let your fun on twitch end with The Earl!`
         this.random = random.getNum(10);
-        this.additionalText =  await this.channelMessage(this.random, channelName, capitalName)
+        this.additionalText =  await this.channelMessage(this.random, capitalName, channelName)
+        this.random = random.getNum(3);
+        let flare = await this.flareText(this.random);
         this.response = this.response + ` ` + this.additionalText
         let gameLastPlayed = await this.GetLastGame(channelName);
         if (gameLastPlayed !== ''){
-          this.response = this.response + ' ' + 'They were last streaming' + ' ' + gameLastPlayed
+          this.response = this.response + ' ' + 'They were last streaming' + ' ' + gameLastPlayed + '.' + ' ' + flare
         }
       }
       else {
@@ -151,6 +153,20 @@ Shoutout.prototype.bindShoutout = function () {
       break;
       case 9:
       return `Give ${capitalName} some love at www.twitch.tv/${channelName}`;
+      break;
+    }
+  }
+
+  Shoutout.prototype.flareText = async function (random){
+    switch (random) {
+      case 0:
+      return `They're a good bean.`;
+      break;
+      case 1:
+      return `They are my little Pog Champ`;
+      break;
+      case 2:
+      return `They are a real cutie`;
       break;
     }
   }
