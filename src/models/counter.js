@@ -3,6 +3,7 @@ const pschannel = require('../helpers/pubsubchannels');
 const pluralize = require('pluralize')
 const random = require('../helpers/random.js');
 const strip = require('../helpers/strip.js');
+const chatbot = require('../models/chatBot.js')
 
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
@@ -26,9 +27,15 @@ Counter.prototype.bindCounter = function () {
 
     this.message = data
 
+    entry = null
+
     this.message = this.message.replace('!newcount','').trim();
 
     let counterTitle = await this.getTitleFromMessage(this.message);
+
+    if (counterTitle === undefined){
+      PubSub.publish(pschannel.response, `Please mark your new counter title with a !. eg !newcount !deaths`);
+    }
 
     isPlural = pluralize.isPlural(counterTitle);
 
@@ -38,10 +45,8 @@ Counter.prototype.bindCounter = function () {
 
     let allKeys = this.getKeys()
 
-    if (counterTitle === undefined){
-      this.response = `Please mark your new counter title with a !. eg !new !deaths`
-    }
-    else if ( allKeys.includes(counterTitle) ){
+
+    if ( allKeys.includes(counterTitle) ){
       let response = await this.setResponse(counterTitle)
       this.setLastUsedCommand(counterTitle);
       this.response = 'Sorry that counter already exists. :( ' + ' ' + response
@@ -54,21 +59,34 @@ Counter.prototype.bindCounter = function () {
 
       if (counterTitle != undefined){
         if(number === ''){
+
           db.set(`counter.${counterTitle}`, {command: counterCommand, count: '0' })
           .write()
+
+          dataBeingAdded = {[counterTitle]: {command: counterCommand, count:0}}
+
+          this.setLastUsedCommand(counterTitle);
+            PubSub.publish(pschannel.responseNewCount, dataBeingAdded);
         }
         else {
           db.set(`counter.${counterTitle}`, {command: counterCommand, count: number })
           .write()
+
+          dataBeingAdded = {[counterTitle]: {command: counterCommand, count: number}}
+
+          this.setLastUsedCommand(counterTitle);
+          
+            PubSub.publish(pschannel.responseNewCount, dataBeingAdded);
         }
 
-        this.setLastUsedCommand(counterTitle);
+
+
 
         this.response = await this.setResponse(counterTitle);
       }
     }
 
-    PubSub.publish(pschannel.response, this.response);
+      PubSub.publish(pschannel.responseNoAt, this.response);
   });
 
 

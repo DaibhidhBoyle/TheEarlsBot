@@ -26,7 +26,7 @@ Lurk.prototype.bindLurk = function () {
 
     this.user = capitalise.capital(data)
 
-    this.random = random.getNum(3);
+    this.random = random.getNum(5);
 
     console.log(this.random);
 
@@ -37,10 +37,10 @@ Lurk.prototype.bindLurk = function () {
     .value()
 
     if (count === '0'){
-      this.response = this.user + ' ' + 'is watching on from the surrounding foam'
+      this.response = this.user + ' ' + 'has started to lurk. See you soon, I hope'
     }
     else if (count === '1'){
-      this.response = this.user + ' ' + 'is watching on from the surrounding foam with 1 friend'
+      this.response = this.user + ' ' + 'is watching on lurk mode with 1 friend'
     }
     else {
       this.response = await this.setResponse(this.random, count)
@@ -61,6 +61,12 @@ Lurk.prototype.setResponse = function (random, count) {
   }
   else if (random === 2){
     return this.user + ' ' + 'has started to lurk along side' + ' ' + count + ' ' + 'friends'
+  }
+  else if (random ===3 ){
+    return this.user + ' ' + 'has started to lurk with' + ' ' + count + ' ' + 'of our friends. Hope to see you soon.'
+  }
+  else if (random ===4 ){
+    return this.user + ' ' + 'is chilling on lurk with ' + ' ' + count + ' ' + 'others. We love lurkers! :)'
   }
 
 }

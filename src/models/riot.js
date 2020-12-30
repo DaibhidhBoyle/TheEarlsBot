@@ -20,12 +20,11 @@ Riot.prototype.bindRiot = function () {
 
     if(this.rioters.indexOf(this.user) === -1) {
     this.rioters.push(this.user);
-    console.log(this.user);
 }
 
     console.log('riot count =' + ' ' + this.rioters.length);
 
-    if(this.rioters.length === 2){
+    if(this.rioters.length === 10){
       this.random = random.getNum(3);
 
       this.response = await this.randomRiot(this.random);

@@ -94,7 +94,7 @@ Social.prototype.randomPo = function (random) {
     return `Kenny doesn't have his own PO box, but he knows people. Send your mail to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll get it to him.`;
   }
   else if(random === 2){
-    return `Wanna send Kenny fan mail? He's used it, get it all the time, he promises. Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll read it to him- kenny is too popular to do his own reading`;
+    return `Wanna send Kenny fan mail? He's used it, gets it all the time, he promises. Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll read it to him- kenny is too popular to do his own reading`;
   }
 
 };

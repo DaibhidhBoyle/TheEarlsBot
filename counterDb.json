@@ -1,37 +1,153 @@
 {
+  "lastUsedCommand": "armbands",
   "counter": {
-    "crowns": {
-      "command": "!crown",
-      "count": "10"
-    },
-    "loves": {
-      "command": "!love",
-      "count": "555"
-    },
-    "hopes": {
-      "command": "!hope",
-      "count": "6"
-    },
-    "deaths": {
-      "command": "!death",
-      "count": "0"
-    },
-    "dais": {
-      "command": "!dai",
+    "vibes": {
+      "command": "!vibe",
       "count": "1"
     },
-    "reads": {
-      "command": "!read",
+    "kennies": {
+      "command": "!kenny",
       "count": "0"
     },
-    "happies": {
-      "command": "!happy",
-      "count": "1"
+    "woops": {
+      "command": "!woop",
+      "count": "0"
     },
-    "depressions": {
-      "command": "!depression",
+    "phones": {
+      "command": "!phone",
+      "count": "0"
+    },
+    "fates": {
+      "command": "!fate",
+      "count": "0"
+    },
+    "poops": {
+      "command": "!poop",
       "count": "44"
+    },
+    "dooms": {
+      "command": "!doom",
+      "count": "4"
+    },
+    "queens": {
+      "command": "!queen",
+      "count": "5"
+    },
+    "dogs": {
+      "command": "!dog",
+      "count": "0"
+    },
+    "health": {
+      "command": "!health",
+      "count": "0"
+    },
+    "lows": {
+      "command": "!low",
+      "count": "0"
+    },
+    "cages": {
+      "command": "!cage",
+      "count": "0"
+    },
+    "gins": {
+      "command": "!gin",
+      "count": "0"
+    },
+    "cocktails": {
+      "command": "!cocktail",
+      "count": "1"
+    },
+    "mouths": {
+      "command": "!mouth",
+      "count": "1"
+    },
+    "twitches": {
+      "command": "!twitch",
+      "count": "0"
+    },
+    "screens": {
+      "command": "!screen",
+      "count": "0"
+    },
+    "epps": {
+      "command": "!epp",
+      "count": "0"
+    },
+    "highs": {
+      "command": "!high",
+      "count": "0"
+    },
+    "tails": {
+      "command": "!tail",
+      "count": "0"
+    },
+    "s0nics": {
+      "command": "!s0nic",
+      "count": "0"
+    },
+    "earls": {
+      "command": "!earl",
+      "count": "0"
+    },
+    "hares": {
+      "command": "!hare",
+      "count": "0"
+    },
+    "remotes": {
+      "command": "!remote",
+      "count": "0"
+    },
+    "hairs": {
+      "command": "!hair",
+      "count": "0"
+    },
+    "hedgehogs": {
+      "command": "!hedgehog",
+      "count": "0"
+    },
+    "witches": {
+      "command": "!witch",
+      "count": "0"
+    },
+    "sands": {
+      "command": "!sand",
+      "count": "0"
+    },
+    "beefs": {
+      "command": "!beef",
+      "count": "0"
+    },
+    "cows": {
+      "command": "!cow",
+      "count": "0"
+    },
+    "arrows": {
+      "command": "!arrow",
+      "count": "0"
+    },
+    "pounces": {
+      "command": "!pounce",
+      "count": "0"
+    },
+    "glasses": {
+      "command": "!glass",
+      "count": "0"
+    },
+    "hands": {
+      "command": "!hand",
+      "count": "0"
+    },
+    "weeks": {
+      "command": "!week",
+      "count": "0"
+    },
+    "controls": {
+      "command": "!control",
+      "count": "0"
+    },
+    "armbands": {
+      "command": "!armband",
+      "count": "0"
     }
-  },
-  "lastUsedCommand": "deaths"
+  }
 }

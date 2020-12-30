@@ -29,7 +29,7 @@ Rules.prototype.bindRules = function () {
       this.response = `No spamming (unless it's emotes then go wild :) )`
     }
     else if (this.message.includes(`!promote`)){
-      this.response = `Dont self promote, thats not cool`
+      this.response = `Dont self promote, that's not cool`
     }
     else if (this.message.includes(`!hammer`)){
       this.response = `Respect the mods or get the hammer`

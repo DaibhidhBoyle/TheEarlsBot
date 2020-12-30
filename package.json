@@ -14,6 +14,7 @@
     "dotenv": "^8.2.0",
     "iso8601-duration": "^1.2.0",
     "lowdb": "^1.0.0",
+    "merge": "^2.1.0",
     "node-speedrun": "^1.2.0",
     "pluralize": "^8.0.0",
     "prompt-async": "^0.9.9",

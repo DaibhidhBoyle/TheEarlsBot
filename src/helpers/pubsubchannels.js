@@ -50,6 +50,7 @@ const COUNTMOD = 'ChatBot: chat message to affect count database as a mod';
 const QUICKADD = 'Chatbot: chat message to add one to the latest counter used';
 const QUICKSUBTRACT = 'Chatbot: chat message to takes one away from the latest counter used';
 const ALLCOUNTERS = 'Chatbot: chat message to returns all the counters for Mods';
+const RESPONSENEWCOUNT = 'Counter: response and set up new counter'
 
 exports.newcounter = NEWCOUNTER;
 exports.deletecounter = DELETECOUNTER;
@@ -58,3 +59,4 @@ exports.countmod = COUNTMOD;
 exports.quickadd = QUICKADD;
 exports.quicksubtract = QUICKSUBTRACT;
 exports.allcounters = ALLCOUNTERS;
+exports.responseNewCount = RESPONSENEWCOUNT;
