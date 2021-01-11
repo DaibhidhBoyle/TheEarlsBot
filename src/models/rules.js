@@ -35,7 +35,7 @@ Rules.prototype.bindRules = function () {
       this.response = `Respect the mods or get the hammer`
     }
     else if(this.message.includes('!rules')){
-      this.response = `1. CLEAN CHAT ONLY!  If I can talk clean you can type clean | 2. No bullying / homophobia / hate towards religion & personal beliefs | 3. No  excessive  flirting | 4. Save links for the discord | 5. Spam emotes, not words | 6. Dont self promote, thats not cool| 7. Respect my mods or get the hammer`
+      this.response = `1. CLEAN CHAT ONLY!  If I can talk clean you can type clean BOP 2. No bullying / homophobia / hate towards religion & personal beliefs BOP 3. No  excessive  flirting BOP 4. Save links for the discord BOP 5. Spam emotes, not words BOP 6. Dont self promote, thats not cool BOP 7. Respect my mods or get the hammer`
     };
 
     PubSub.publish(pschannel.responseNoAt, this.response);

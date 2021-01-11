@@ -28,8 +28,6 @@ Lurk.prototype.bindLurk = function () {
 
     this.random = random.getNum(5);
 
-    console.log(this.random);
-
     db.update(`lurk`, n => `${Number(n) + 1}`)
     .write()
 
@@ -37,10 +35,10 @@ Lurk.prototype.bindLurk = function () {
     .value()
 
     if (count === '0'){
-      this.response = this.user + ' ' + 'has started to lurk. See you soon, I hope'
+      this.response = this.user + ' ' + 'has started to lurk. See you soon!'
     }
     else if (count === '1'){
-      this.response = this.user + ' ' + 'is watching on lurk mode with 1 friend'
+      this.response = this.user + ' ' + 'is watching on lurk mode with 1 friend. They will be back later'
     }
     else {
       this.response = await this.setResponse(this.random, count)

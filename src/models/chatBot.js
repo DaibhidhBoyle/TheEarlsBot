@@ -65,14 +65,6 @@ ChatBot.prototype.bindChatBot = async function () {
 		client.action(`${this.channel}`, `${data}`);
 	});
 
-	PubSub.subscribe(pschannel.responseNewCount, async (msg, data) => {
-		client.color("channel", "CadetBlue")
-		console.log(data);
-		this.counter = merge.recursive(this.counter, data)
-		console.log(this.counter);
-			client.action(`${this.channel}`, `@${this.user[`display-name`]}` + ` ` + `${this.count}`);
-		});
-
 		PubSub.subscribe(pschannel.responseriot, (msg, data) => {
 			client.color("channel", "Red");
 			client.action(`${this.channel}`, `@${this.user[`display-name`]}` + ` ` + `${data}`);
@@ -199,6 +191,11 @@ ChatBot.prototype.bindChatBot = async function () {
 			.value()
 
 		}
+
+		PubSub.subscribe(pschannel.updateCountersList, async (msg, data) => {
+
+			this.counter = merge.recursive(this.counter, data)
+		});
 	};
 
 

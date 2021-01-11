@@ -66,7 +66,7 @@ Counter.prototype.bindCounter = function () {
           dataBeingAdded = {[counterTitle]: {command: counterCommand, count:0}}
 
           this.setLastUsedCommand(counterTitle);
-            PubSub.publish(pschannel.responseNewCount, dataBeingAdded);
+          PubSub.publish(pschannel.updateCountersList, dataBeingAdded);
         }
         else {
           db.set(`counter.${counterTitle}`, {command: counterCommand, count: number })
@@ -75,18 +75,15 @@ Counter.prototype.bindCounter = function () {
           dataBeingAdded = {[counterTitle]: {command: counterCommand, count: number}}
 
           this.setLastUsedCommand(counterTitle);
-          
-            PubSub.publish(pschannel.responseNewCount, dataBeingAdded);
+
+          PubSub.publish(pschannel.updateCountersList, dataBeingAdded);
         }
-
-
-
 
         this.response = await this.setResponse(counterTitle);
       }
     }
 
-      PubSub.publish(pschannel.responseNoAt, this.response);
+    PubSub.publish(pschannel.responseNoAt, this.response);
   });
 
 
