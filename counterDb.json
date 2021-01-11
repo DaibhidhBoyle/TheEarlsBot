@@ -1,13 +1,12 @@
 {
-  "lastUsedCommand": "queens",
+  "lastUsedCommand": "deaths",
   "counter": {
     "deaths": {
       "command": "!death",
-      "count": "667"
+      "count": "55"
     },
     "queens": {
-      "command": "!queen",
-      "count": "0"
+      "count": "NaN"
     }
   }
 }
