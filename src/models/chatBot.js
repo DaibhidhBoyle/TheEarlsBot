@@ -133,8 +133,7 @@ ChatBot.prototype.bindChatBot = async function () {
 			}
 			//lurk
 			else if (this.message.includes(`!lurk`)){
-				let modStatus = await permissions.checkIfMod(this.user)
-				this.levelHandler(pschannel.lurk, pschannel.modonly, modStatus, this.user[`display-name`])
+				PubSub.publish(pschannel.soap, this.user[`display-name`])
 			}
 			//goodBot
 			else if (this.message === `good bot` || this.message === `bad bot` || this.message.includes(`@thesudsbot`)){
@@ -186,7 +185,6 @@ ChatBot.prototype.bindChatBot = async function () {
 
 		ChatBot.prototype.counterCreation = function () {
 
-			console.log('here')
 			return	db.get('counter')
 			.value()
 
