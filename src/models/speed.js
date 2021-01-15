@@ -46,7 +46,6 @@ Speed.prototype.bindSpeed = function () {
 
 Speed.prototype.setGame = async function (channel){
   let livedata = await twitch.searchChannels(`${channel}`)
-  //data.channel)
   return livedata['channels'][0]['game']
 }
 
