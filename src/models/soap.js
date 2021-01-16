@@ -62,7 +62,7 @@ Soap.prototype.bindSoap = function () {
             this.response = `I found the ${products[0]} available at ${this.shortUrl}`;
           }
           else if (links.length > 1){
-            this.response = `There's a lot of great products matching your search! Like the ${products[0]} Available at ${this.shortUrl} + ` ` + `.` + ` ` Have a look at them all at ${this.url}` + ` ` + `!`;
+            this.response = `There's a lot of great products matching your search! Like the ${products[0]} Available at ${this.shortUrl}` + ` ` + `.` + ` ` + `Have a look at them all at ${this.url}` + ` ` + `!`;
           }
 
 

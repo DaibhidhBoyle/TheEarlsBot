@@ -133,7 +133,7 @@ ChatBot.prototype.bindChatBot = async function () {
 			}
 			//lurk
 			else if (this.message.includes(`!lurk`)){
-				PubSub.publish(pschannel.soap, this.user[`display-name`])
+				PubSub.publish(pschannel.lurk, this.user[`display-name`])
 			}
 			//goodBot
 			else if (this.message === `good bot` || this.message === `bad bot` || this.message.includes(`@thesudsbot`)){
