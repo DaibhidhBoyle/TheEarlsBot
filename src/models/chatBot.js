@@ -89,7 +89,7 @@ ChatBot.prototype.bindChatBot = async function () {
 				PubSub.publish(pschannel.rssocial, this.message);
 			}
 			// basic
-			else if (this.message.includes(`!welcome`)  || this.message.includes('!royaltysoaps') || this.message.includes('!rs') || this.message.includes('!schedule') || this.message.includes('!when') || this.message.includes('!movie') || this.message.includes('!mn') || this.message.includes('!donate') || this.message.includes('!command') || this.message.includes('!modcommand')) {
+			else if (this.message.includes(`!welcome`)  || this.message.includes('!royaltysoaps') || this.message.includes('!rs') || this.message.includes('!schedule') || this.message.includes('!when') || this.message.includes('!movie') || this.message.includes('!mn') || this.message.includes('!donate') || this.message.includes('!prime')|| this.message.includes('!command') || this.message.includes('!modcommand')) {
 				PubSub.publish(pschannel.basic, this.message);
 			}
 			// friends
@@ -148,7 +148,7 @@ ChatBot.prototype.bindChatBot = async function () {
 				let modStatus = await permissions.checkIfMod(this.user)
 				this.levelHandler(pschannel.deletecounter, pschannel.modonly, modStatus, this.message)
 			}
-			else if (this.message.includes(`!add`) || this.message.includes(`!+`)){
+			else if (this.message.includes(`!add`) || this.message.includes(`!+`) && !this.message.includes('addcom')){
 				let modStatus = await permissions.checkIfMod(this.user)
 				this.levelHandler(pschannel.quickadd, pschannel.modonly, modStatus, this.message)
 			}
