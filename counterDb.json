@@ -3,7 +3,7 @@
   "counter": {
     "deaths": {
       "command": "!death",
-      "count": "55"
+      "count": "61"
     },
     "queens": {
       "count": "NaN"

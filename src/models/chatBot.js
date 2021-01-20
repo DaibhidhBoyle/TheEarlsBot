@@ -148,7 +148,7 @@ ChatBot.prototype.bindChatBot = async function () {
 				let modStatus = await permissions.checkIfMod(this.user)
 				this.levelHandler(pschannel.deletecounter, pschannel.modonly, modStatus, this.message)
 			}
-			else if (this.message.includes(`!add`) || this.message.includes(`!+`) && !this.message.includes('addcom')){
+			else if (this.message.includes(`!add`) && !this.message.includes('!addcom') || this.message.includes(`!+`)){
 				let modStatus = await permissions.checkIfMod(this.user)
 				this.levelHandler(pschannel.quickadd, pschannel.modonly, modStatus, this.message)
 			}
@@ -162,7 +162,6 @@ ChatBot.prototype.bindChatBot = async function () {
 			}
 			else if (this.message.includes('!')){
 				this.counter = await this.counterCreation();
-				console.log(this.counter)
 				for (let command in this.counter){
 					if (this.message.includes('!' + command) || this.message.includes(this.counter[command].command)){
 						let dataToSend = {message: this.message, command: command}
