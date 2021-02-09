@@ -24,7 +24,7 @@ Basic.prototype.bindBasic = function () {
       this.response = `Catch the stream 4pm CT everyday (cept sunday)! and  special early Sunday stream at 1pm CT. Keep up to date on any schedule changes at the discord: discord.gg/HDk9fn2uXS`
     }
     else if(this.message.includes('!movie') || data.includes('!mn')){
-      this.response = `Subs! Join us on Discord ( discord.gg/HDk9fn2uXS ) for a Movie Night every Sunday at 6pm CT. Remember to connect your Discord to your Twitch using the Connections tab so you can be part of the fun!`
+      this.response = `Subs! Join us on Discord ( discord.gg/vPhEzMbYfj ) for a Movie Night every Sunday at 6pm CT. Remember to connect your Discord to your Twitch using the Connections tab so you can be part of the fun!`
     }
     else if(this.message.includes('!donate')){
       this.response = `Donations are not needed but are very apprciated. Donate at https://streamelements.com/theearlofsuds/tip`

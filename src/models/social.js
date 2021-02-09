@@ -50,13 +50,13 @@ Social.prototype.bindSocial = function () {
 Social.prototype.randomDiscord = function (random) {
 
   if(random === 0){
-    return `Can't get enough of the Earl and the chat? Join us on discord at discord.gg/HDk9fn2uXS The vibes are quality!`;
+    return `Can't get enough of the Earl and the chat? Join us on discord at discord.gg/vPhEzMbYfj The vibes are quality!`;
   }
   else if (random === 1){
-    return `Need more positivity in your life? Join the community on discord at discord.gg/HDk9fn2uXS`;
+    return `Need more positivity in your life? Join the community on discord at discord.gg/vPhEzMbYfj`;
   }
   else if (random === 2){
-    return `You bring the chat and I'll bring the chips. Meet you on the discord at discord.gg/HDk9fn2uXS`;
+    return `You bring the chat and I'll bring the chips. Meet you on the discord at discord.gg/vPhEzMbYfj`;
   };
 };
 

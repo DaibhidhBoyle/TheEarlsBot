@@ -13,7 +13,7 @@ Config.prototype.bindConfig = function () {
     const config = new Config();
     config.username = 'TheSudsBot'
     config.password = 'oauth:1o5yuowrdtck6x9u1vch3i2uogc2mi'
-    config.channel = 'dai101'
+    config.channel = 'theearlofsuds'
       PubSub.publish(pschannel.configureoptions, config);
   };
 
