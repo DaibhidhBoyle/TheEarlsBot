@@ -21,7 +21,7 @@ Basic.prototype.bindBasic = function () {
       this.response = `Kenny and his family work to make luxury, hand-crafted soaps and invites you be part of the process through high quality crafting videos. Find out more at https://www.royaltysoaps.com/ or get a look at those 'making of' videos at youtube.com/royaltysoaps`
     }
     else if(this.message.includes('!when') || data.includes('!schedule')){
-      this.response = `Catch the stream 4pm CT everyday (cept sunday)! and  special early Sunday stream at 1pm CT. Keep up to date on any schedule changes at the discord: discord.gg/HDk9fn2uXS`
+      this.response = `Catch the stream 4pm CT everyday (cept sunday)! and special early Sunday stream at 1pm CT. Keep up to date on any schedule changes at the discord: discord.gg/vPhEzMbYfj`
     }
     else if(this.message.includes('!movie') || data.includes('!mn')){
       this.response = `Subs! Join us on Discord ( discord.gg/vPhEzMbYfj ) for a Movie Night every Sunday at 6pm CT. Remember to connect your Discord to your Twitch using the Connections tab so you can be part of the fun!`
