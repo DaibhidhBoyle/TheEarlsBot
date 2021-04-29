@@ -76,9 +76,12 @@ ChatBot.prototype.bindChatBot = async function () {
 		});
 
 		ChatBot.prototype.handler = async () => {
-			//beard
-			if (this.message.includes(`!beard`)){
-				PubSub.publish(pschannel.beard, this.message);
+		 //no reply
+		 if (this.user[`display-name`] === 'TheSudsBot' || this.message.includes(`!settitle`)){
+		 }
+		 //beard
+		 else if (this.message.includes(`!beard`)){
+			 PubSub.publish(pschannel.beard, this.message);
 			}
 			//social
 			else if (this.message.includes(`!discord`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes('!twitter') || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social') || this.message === `!po` ){

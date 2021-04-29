@@ -37,7 +37,7 @@ Shoutout.prototype.bindShoutout = function () {
     this.response = ' '
     this.message = data.trim();
 
-    if (this.message === '!so'){
+    if (this.message === '!so' || this.message === '!shoutout'){
 
       this.response = `Looks like your trying to shout someone out but you haven't said who. If you want to shout someone out be sure to @ them`;
 
@@ -46,6 +46,8 @@ Shoutout.prototype.bindShoutout = function () {
     } else {
       this.shoutoutList = [];
 
+      this.message = this.message.replace('!so','').trim();
+      this.message = this.message.replace('!shoutout','').trim();
 
       while (this.message !== null){
         this.slicemessage(this.message);
@@ -117,6 +119,7 @@ Shoutout.prototype.bindShoutout = function () {
       }
     }
     else {
+      if (this.counter === 0 && str.indexOf(` `) === -1) this.shoutoutList.push(str.trim());
       this.messageRemaining = null
     }
 

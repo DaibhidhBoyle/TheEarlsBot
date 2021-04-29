@@ -52,9 +52,4 @@ RsSocial.prototype.RandomFb = function (random) {
 };
 
 
-
-
-};
-
-
 module.exports = RsSocial;
