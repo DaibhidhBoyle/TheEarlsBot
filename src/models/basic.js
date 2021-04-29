@@ -30,7 +30,7 @@ Basic.prototype.bindBasic = function () {
       this.response = `Donations are not needed but are very apprciated. Donate at https://streamelements.com/theearlofsuds/tip`
     }
     else if(this.message.includes('!prime')){
-      this.response = `Remember if you have Amazon Prime you can connect it Prime Gaming here on Twitch ( gaming.amazon.com ) to subscribe to your favorite streamer for free! Give them those Bezos Bucks`
+      this.response = `Remember if you have Amazon Prime you can connect it to Prime Gaming here on Twitch ( gaming.amazon.com ) to subscribe to your favorite streamer for free! Give them those Bezos Bucks`
     }
     else if(this.message.includes('!command')){
       this.response = `See all the trick I can do at http://bit.ly/ecomand`
