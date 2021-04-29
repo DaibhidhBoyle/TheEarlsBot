@@ -30,6 +30,10 @@ Social.prototype.bindSocial = function () {
       this.response = await this.randomInsta(this.random);
     }
 
+    else if (this.message.includes('!twitter')) {
+      this.response = await this.randomTwitter(this.random);
+    }
+
     else if (this.message.includes(`!youtube`) || this.message.includes(`!yt`)){
       this.response = await this.randomYt(this.random);
     }
@@ -73,6 +77,19 @@ Social.prototype.randomInsta = function (random) {
 
 };
 
+Social.prototype.randomTwitter = function (random) {
+  if(random === 0){
+    return `Kenny has at least one tweet. Check it out at twitter.com/theearlofsuds`;
+  }
+  else if(random === 1){
+    return `Kenny has an ongoing twitter feud with Bad Vibes. Follow the drama at twitter.com/theearlofsuds`;
+  }
+  else if(random === 2){
+    return `You are encourage to follow kenny on twitter https://twitter.com/theearlofsuds . you are not encourage to follow Kenny on the street`;
+  }
+
+};
+
 Social.prototype.randomYt = function (random) {
   if(random === 0){
     return `Get to know Kenny more at www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA`;
@@ -88,13 +105,13 @@ Social.prototype.randomYt = function (random) {
 
 Social.prototype.randomPo = function (random) {
   if(random === 0){
-    return `Wanna give Kenny a little gift, he'd love that! Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll pass it along to him`;
+    return `Kenny's got his own PO Box! It's Kenny White, P.O. Box 181245 Arlington, TX 76096 . I use it to send him the message 'get hair bro' repeatedly. Like all good bots should`;
   }
   else if(random === 1){
-    return `Kenny doesn't have his own PO box, but he knows people. Send your mail to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll get it to him.`;
+    return `Send Kenny mail at Kenny White, P.O. Box 181245 Arlington, TX 76096 . Someone will read it to him; Kenny's too famous to read`;
   }
   else if(random === 2){
-    return `Wanna send Kenny fan mail? He's used it, gets it all the time, he promises. Send it to Kenny White, P.O. Box 1025, Terrell, Texas, 75160. They'll read it to him- kenny is too popular to do his own reading`;
+    return `Wanna send Kenny fan mail? He's used it, gets it all the time, legit, he promises. Send it to Kenny White, P.O. Box 181245 Arlington, TX 76096 .`;
   }
 
 };

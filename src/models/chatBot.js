@@ -81,11 +81,11 @@ ChatBot.prototype.bindChatBot = async function () {
 				PubSub.publish(pschannel.beard, this.message);
 			}
 			//social
-			else if (this.message.includes(`!discord`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social') || this.message === `!po` ){
+			else if (this.message.includes(`!discord`) || this.message.includes(`!instagram`) || this.message.includes(`!insta`) || this.message.includes('!twitter') || this.message.includes(`!youtube`) || this.message.includes(`!yt`) || this.message.includes('!social') || this.message === `!po` ){
 				PubSub.publish(pschannel.social, this.message);
 			}
 			//rssocial
-			else if (this.message.includes(`!twitter`) || this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes('!rssocial') ) {
+			else if  (this.message.includes(`!facebook`) || this.message.includes(`!fb`) || this.message.includes('!rssocial') ) {
 				PubSub.publish(pschannel.rssocial, this.message);
 			}
 			// basic

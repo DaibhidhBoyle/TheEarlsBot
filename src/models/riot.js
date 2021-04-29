@@ -30,7 +30,7 @@ Riot.prototype.bindRiot = function () {
       this.response = await this.randomRiot(this.random);
       this.rioters = []
 
-      PubSub.publish(pschannel.responseNoAt, this.response);
+      PubSub.publish(pschannel.responseriot, this.response);
     }
 
   });

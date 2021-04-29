@@ -22,11 +22,9 @@ RsSocial.prototype.bindRsSocial = function () {
 
     this.message = data
 
-    if (this.message.includes('!twitter')) {
-      this.response = await this.randomTwitter(this.random);
-    }
 
-    else if (this.message.includes(`!facebook`) || this.message.includes('!fb')) {
+
+    if (this.message.includes(`!facebook`) || this.message.includes('!fb')) {
       this.response = await this.RandomFb(this.random);
     }
 
@@ -39,19 +37,6 @@ RsSocial.prototype.bindRsSocial = function () {
   });
 };
 
-
-RsSocial.prototype.randomTwitter = function (random) {
-  if(random === 0){
-    return `Kenny doesn't have twitter but Royalty Soaps does! Catch your bite sized soap updates at bit.ly/2QAZI33 ... that's poorly worded. Please don't eat soap`;
-  }
-  else if(random === 1){
-    return `Kenny doesn't have twitter but Royalty Soaps does! Slide some soap into your twitter feed at bit.ly/2QAZI33`;
-  }
-  else if(random === 2){
-    return `Kenny doesn't have twitter but Royalty Soaps does! They have a long running twitter feud with boring bath times. Follow the drama at bit.ly/2QAZI33`;
-  }
-
-};
 
 RsSocial.prototype.RandomFb = function (random) {
   if(random === 0){
@@ -67,16 +52,7 @@ RsSocial.prototype.RandomFb = function (random) {
 };
 
 
-RsSocial.prototype.randomSocial = function (random) {
-  if(random === 0){
-    return `Only seeing Kenny on Twitch not enough? Get more at Instagram - bit.ly/theearlofsuds and Youtube - www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA Or join the fun over at the community discord - https://discordapp.com/invite/PmK33d4`;
-  }
-  else if(random === 1){
-    return `Weeby, Nerdy and occasionally Beardy! Oh My! Get more at Instagram -  bit.ly/theearlofsuds , Youtube - www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA and Discord - https://discordapp.com/invite/PmK33d4`;
-  }
-  else if(random === 2){
-    return `Get your Kenny fix at Instagram -  bit.ly/theearlofsuds , Youtube - www.youtube.com/channel/UCwjJe8wSeT_NwPVHY_J5QyA Or join the fun over at the community discord - https://discordapp.com/invite/PmK33d4`;
-  }
+
 
 };
 

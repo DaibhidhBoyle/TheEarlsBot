@@ -52,7 +52,7 @@ Lurk.prototype.bindLurk = function () {
 Lurk.prototype.setResponse = function (random, count) {
 
   if (random === 0){
-    return this.user + ' ' + 'is lurking; watching on tearfully from a distance' + ' ' + count + ' ' + 'others'
+    return this.user + ' ' + 'is lurking; watching on tearfully from a distance with' + ' ' + count + ' ' + 'others'
   }
   else if (random === 1){
     return this.user + ' ' + 'has a busy life and needs to get stuff done. They have joined' + ' ' + count + ' ' + ' others in lurking'
@@ -60,10 +60,10 @@ Lurk.prototype.setResponse = function (random, count) {
   else if (random === 2){
     return this.user + ' ' + 'has started to lurk along side' + ' ' + count + ' ' + 'friends'
   }
-  else if (random ===3 ){
+  else if (random === 3 ){
     return this.user + ' ' + 'has started to lurk with' + ' ' + count + ' ' + 'of our friends. Hope to see you soon.'
   }
-  else if (random ===4 ){
+  else if (random === 4 ){
     return this.user + ' ' + 'is chilling on lurk with ' + ' ' + count + ' ' + 'others. We love lurkers! :)'
   }
 
