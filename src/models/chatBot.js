@@ -48,7 +48,7 @@ ChatBot.prototype.bindChatBot = async function () {
 
 			client.action(`${this.channel}`, 'Hello everyone. The Suds Bot is here and ready help with whatever you need');
 
-			setInterval(PubSub.publish(pschannel.beard, this.message), 10);
+			setInterval(this.timedHandler, 10000);
 		});
 
 	});
@@ -136,6 +136,10 @@ ChatBot.prototype.bindChatBot = async function () {
 			let dataToSend = {message: this.message, channel: this.channel};
 			PubSub.publish(pschannel.speed, dataToSend);
 		}
+		//TIMEDSET
+		else if(this.message.includes('!timed')){
+			PubSub.publish(pschannel.timedset, this.message);
+		}
 		//lurk
 		else if (this.message.includes(`!lurk`)){
 			PubSub.publish(pschannel.lurk, this.user[`display-name`])
@@ -178,6 +182,10 @@ ChatBot.prototype.bindChatBot = async function () {
 
 
 	};
+
+	ChatBot.prototype.timedHandler = function () {
+		PubSub.publish(pschannel.timed, null);
+	}
 
 	ChatBot.prototype.levelHandler = function (targetChannel1, targetChannel2, level, message) {
 		if (level === true){

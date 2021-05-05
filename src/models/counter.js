@@ -3,7 +3,6 @@ const pschannel = require('../helpers/pubsubchannels');
 const pluralize = require('pluralize')
 const random = require('../helpers/random.js');
 const strip = require('../helpers/strip.js');
-const chatbot = require('../models/chatBot.js')
 
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')

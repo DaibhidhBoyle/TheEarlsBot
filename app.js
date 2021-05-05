@@ -13,6 +13,7 @@ const Shoutout = require('./src/models/shoutout.js');
 const Streak = require('./src/models/streak.js');
 const Speed = require('./src/models/speed.js');
 const Soap = require('./src/models/soap.js');
+const Timed = require('./src/models/timed.js')
 const Lurk = require('./src/models/lurk.js');
 const GoodBot = require('./src/models/goodBot.js');
 const Counter = require('./src/models/counter.js');
@@ -55,6 +56,9 @@ const binds = async () => {
 
   const speed = new Speed();
   speed.bindSpeed();
+
+  const timed = new Timed();
+  timed.bindTimed();
 
   const lurk = new Lurk();
   lurk.bindLurk();
