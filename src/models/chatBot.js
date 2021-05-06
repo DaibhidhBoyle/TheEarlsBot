@@ -48,7 +48,7 @@ ChatBot.prototype.bindChatBot = async function () {
 
 			client.action(`${this.channel}`, 'Hello everyone. The Suds Bot is here and ready help with whatever you need');
 
-			setInterval(this.timedHandler, 10000);
+			setInterval(this.timedHandler, 1500000);
 		});
 
 	});

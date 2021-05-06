@@ -39,8 +39,6 @@ Timed.prototype.bindTimed = function () {
 
     this.response = ' '
 
-    console.log(this.repeatResponse);
-
     if (this.repeatResponse !== null){
       this.response = this.repeatResponse
     } else {

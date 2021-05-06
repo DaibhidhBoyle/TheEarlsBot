@@ -55,9 +55,14 @@ Speed.prototype.getCategoryLink = async function (game){
   let formattedGame = game.split(" ").join("%20")
   formattedGame = formattedGame.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   let gamedata = await axios.get(`https://www.speedrun.com/api/v1/games?name=${formattedGame}`)
+    .catch(function (error) {
+      console.log(error);
+      PubSub.publish(pschannel.response, `Sorry! I can't find any speed run information for ${this.game} :(`);
+    });
     if (gamedata.status !== 200 || !Array.isArray(gamedata.data.data) || !gamedata.data.data.length){
       PubSub.publish(pschannel.response, `Sorry! I can't find any speed run information for ${this.game} :(`);
     }
+
     for (link of gamedata.data.data[0]['links']){
       if (link['rel'] === 'categories'){
         let allrunsinfo = await this.getRunLinks(link['uri'])
@@ -74,6 +79,10 @@ Speed.prototype.getCategoryLink = async function (game){
 
 
     let gamedataRecieved = await axios.get(link)
+    .catch(function (error) {
+      console.log(error);
+      PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
+    });
     if (gamedataRecieved.status !== 200 ){
       PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
     }
@@ -140,6 +149,10 @@ Speed.prototype.getCategoryLink = async function (game){
     let listOfLeaderBoards = []
     for (runLink of runLinks){
       let fullRunInfo = await axios.get(runLink)
+      .catch(function (error) {
+        console.log(error);
+        PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
+      });
       if (fullRunInfo.status !== 200 ){
         PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
       }
@@ -157,6 +170,10 @@ Speed.prototype.getCategoryLink = async function (game){
     let listOfTimes = []
     for (link of boardLinks){
       let boardInfo = await axios.get(link)
+      .catch(function (error) {
+        console.log(error);
+        PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
+      });
       if (boardInfo.status !== 200 ) {
         PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
       }
@@ -182,6 +199,10 @@ Speed.prototype.getCategoryLink = async function (game){
       for (playerLink of playerLinks){
         if (playerLink.length === 1){
           nameData = await axios.get(playerLink[0])
+          .catch(function (error) {
+            console.log(error);
+            PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
+          });
           if (nameData.status !== 200 ){
             PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
           }
@@ -190,6 +211,10 @@ Speed.prototype.getCategoryLink = async function (game){
           currentNames = []
           for (player of playerLink){
             nameData = await axios.get(player)
+            .catch(function (error) {
+              console.log(error);
+              PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
+            });
             if (nameData.status !== 200 ){
               PubSub.publish(pschannel.response, `Sorry. Something went wrong with that search. Please try again later`);
             }

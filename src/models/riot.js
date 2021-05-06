@@ -3,6 +3,7 @@ const PubSub = require('pubsub-js');
 const random = require('../helpers/random.js');
 const pschannel = require('../helpers/pubsubchannels');
 
+
 const Riot = function (){
   this.response = null
   this.user = null
@@ -19,12 +20,12 @@ Riot.prototype.bindRiot = function () {
     this.user = data
 
     if(this.rioters.indexOf(this.user) === -1) {
-    this.rioters.push(this.user);
-}
+      this.rioters.push(this.user);
+    }
 
     console.log('riot count =' + ' ' + this.rioters.length);
 
-    if(this.rioters.length === 10){
+    if(this.rioters.length === 1){
       this.random = random.getNum(5);
 
       this.response = await this.randomRiot(this.random);
