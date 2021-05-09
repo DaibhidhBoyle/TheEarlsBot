@@ -25,7 +25,7 @@ Riot.prototype.bindRiot = function () {
 
     console.log('riot count =' + ' ' + this.rioters.length);
 
-    if(this.rioters.length === 1){
+    if(this.rioters.length === 10){
       this.random = random.getNum(5);
 
       this.response = await this.randomRiot(this.random);
